@@ -2,7 +2,7 @@
 
 Ecommerce utilizando JSF. Desenvolvido na disciplina de ** Projeto de Aplicação WEB **.
 
-Especificação em: [specification/Especifiação](https://github.com/alesshh/shopping-ucs/tree/master/specification/Especifiação).
+Especificação em: [specification/Especifiação.pdf](https://github.com/alesshh/shopping-ucs/tree/master/specification/Especifiação.pdf).
 
 Casos de uso em: [specification/shopping_ucs.jude](https://github.com/alesshh/shopping-ucs/tree/master/specification/shopping_ucs.jude).
 
