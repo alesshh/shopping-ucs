@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+<html lang="pt-BR" xmlns:h="http://java.sun.com/jsf/html" 
+				  xmlns:f="http://java.sun.com/jsf/core"
+				  xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h:head>
+  		<meta charset="UTF-8" />
+	  	<title>Shopping UCS</title>
+	  	<h:outputStylesheet name="css/tuktuk.css" />
+	  	<h:outputStylesheet name="css/tuktuk.icons.css" />
+	  	<h:outputStylesheet name="css/tuktuk.theme.css" />
+	  	<h:outputStylesheet name="css/main.css" />
+	</h:head>
+	<h:body>
+		<header class="padding-top padding-bottom page-header">
+			<div class="row">
+				<div class="column_4">
+					<h1 class="brand">
+						<h:link value="Shopping UCS" outcome="/home"/>
+					</h1>
+				</div>
+				<nav class="column_8 text right" data-tuktuk="menu">
+					<a href="" class="button alert tiny">Admin</a>
+					<a href="" class="button alert tiny">Carrinho</a>
+ 				</nav>
+			</div>
+		</header>
+		
+		<ui:insert name="content"></ui:insert>
+		
+		<div class="row">
+			<div class="column_12 search-bar">
+				<form>
+					<input type="text" placeholder="Que produto você procura?"/>
+					<span class="icon search"></span>
+				</form>
+			</div>
+			<div class="column_4 product">
+				<figure>
+					<img src="http://www.stuartslondon.com/images/brutus-shirt-trimfit-red-heritage-tartan-shirt-p1871-10354_zoom.jpg" />
+				</figure>
+				<p>
+					Camiseta Xadrez<br/>
+					<strong class="price"> R$ 150,00</strong>
+				</p>
+				<a href="#" class="button secondary tiny">
+					+ Detalhes
+				</a>
+			</div>
+			<div class="column_4 product">
+				<figure>
+					<img src="http://www.stuartslondon.com/images/brutus-shirt-trimfit-red-heritage-tartan-shirt-p1871-10354_zoom.jpg" />
+				</figure>
+				<p>
+					Camiseta Xadrez<br/>
+					<strong class="price"> R$ 150,00</strong>
+				</p>
+				<a href="#" class="button secondary tiny">
+					+ Detalhes
+				</a>
+			</div>
+			<div class="column_4 product">
+				<figure>
+					<img src="http://www.stuartslondon.com/images/brutus-shirt-trimfit-red-heritage-tartan-shirt-p1871-10354_zoom.jpg" />
+				</figure>
+				<p>
+					Camiseta Xadrez<br/>
+					<strong class="price"> R$ 150,00</strong>
+				</p>
+				<a href="#" class="button secondary tiny">
+					+ Detalhes
+				</a>
+			</div>
+			<div class="column_4 product">
+				<figure>
+					<img src="http://www.stuartslondon.com/images/brutus-shirt-trimfit-red-heritage-tartan-shirt-p1871-10354_zoom.jpg" />
+				</figure>
+				<p>
+					Camiseta Xadrez<br/>
+					<strong class="price"> R$ 150,00</strong>
+				</p>
+				<a href="#" class="button secondary tiny">
+					+ Detalhes
+				</a>
+			</div>
+			<div class="column_4 product">
+				<figure>
+					<img src="http://www.stuartslondon.com/images/brutus-shirt-trimfit-red-heritage-tartan-shirt-p1871-10354_zoom.jpg" />
+				</figure>
+				<p>
+					Camiseta Xadrez<br/>
+					<strong class="price"> R$ 150,00</strong>
+				</p>
+				<a href="#" class="button secondary tiny">
+					+ Detalhes
+				</a>
+			</div>
+			<div class="column_4 product">
+				<figure>
+					<img src="http://www.stuartslondon.com/images/brutus-shirt-trimfit-red-heritage-tartan-shirt-p1871-10354_zoom.jpg" />
+				</figure>
+				<p>
+					Camiseta Xadrez<br/>
+					<strong class="price"> R$ 150,00</strong>
+				</p>
+				<a href="#" class="button secondary tiny">
+					+ Detalhes
+				</a>
+			</div>
+			
+			<ul class="pagination">
+				<li class="prev"><a href="" class="button alert"><span class="icon chevron-left"></span> Anterior</a></li>
+				<li class="next"><a href="" class="button alert">Próxima <span class="icon chevron-right"></span></a></li>
+			</ul>
+		</div>
+		
+		<h:outputScript name="js/tuktuk.js"  />
+	</h:body>
+</html>
