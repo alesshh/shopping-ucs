@@ -9,6 +9,10 @@
 	  	<h:outputStylesheet name="css/tuktuk.icons.css" />
 	  	<h:outputStylesheet name="css/tuktuk.theme.css" />
 	  	<h:outputStylesheet name="css/main.css" />
+	  	
+	  	<link href="#{resource['images/favicon.ico']}" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+	  	<link href="#{resource['images/favicon.png']}" rel="shortcut icon" type="image/x-icon" />
+	  	<link href="#{resource['images/favicon.png']}" rel="shortcut icon" type="image/png" />
 	</h:head>
 	<h:body>
 		<header class="padding-top padding-bottom page-header">
@@ -19,100 +23,20 @@
 					</h1>
 				</div>
 				<nav class="column_8 text right" data-tuktuk="menu">
-					<a href="" class="button alert tiny">Admin</a>
-					<a href="" class="button alert tiny">Carrinho</a>
+					<a href="" class="button tiny icon shopping-cart"> Carrinho</a>
+					<h:link styleClass="button secondary tiny icon signin" outcome="/login"> Login</h:link>
+					<h:link styleClass="button secondary tiny icon pencil" outcome="/admin/index"> Admin</h:link>	
  				</nav>
 			</div>
 		</header>
 		
-		<ui:insert name="content"></ui:insert>
-		
-		<div class="row">
-			<div class="column_12 search-bar">
-				<form>
-					<input type="text" placeholder="Que produto você procura?"/>
-					<span class="icon search"></span>
-				</form>
-			</div>
-			<div class="column_4 product">
-				<figure>
-					<img src="http://www.stuartslondon.com/images/brutus-shirt-trimfit-red-heritage-tartan-shirt-p1871-10354_zoom.jpg" />
-				</figure>
-				<p>
-					Camiseta Xadrez<br/>
-					<strong class="price"> R$ 150,00</strong>
-				</p>
-				<a href="#" class="button secondary tiny">
-					+ Detalhes
-				</a>
-			</div>
-			<div class="column_4 product">
-				<figure>
-					<img src="http://www.stuartslondon.com/images/brutus-shirt-trimfit-red-heritage-tartan-shirt-p1871-10354_zoom.jpg" />
-				</figure>
-				<p>
-					Camiseta Xadrez<br/>
-					<strong class="price"> R$ 150,00</strong>
-				</p>
-				<a href="#" class="button secondary tiny">
-					+ Detalhes
-				</a>
-			</div>
-			<div class="column_4 product">
-				<figure>
-					<img src="http://www.stuartslondon.com/images/brutus-shirt-trimfit-red-heritage-tartan-shirt-p1871-10354_zoom.jpg" />
-				</figure>
-				<p>
-					Camiseta Xadrez<br/>
-					<strong class="price"> R$ 150,00</strong>
-				</p>
-				<a href="#" class="button secondary tiny">
-					+ Detalhes
-				</a>
-			</div>
-			<div class="column_4 product">
-				<figure>
-					<img src="http://www.stuartslondon.com/images/brutus-shirt-trimfit-red-heritage-tartan-shirt-p1871-10354_zoom.jpg" />
-				</figure>
-				<p>
-					Camiseta Xadrez<br/>
-					<strong class="price"> R$ 150,00</strong>
-				</p>
-				<a href="#" class="button secondary tiny">
-					+ Detalhes
-				</a>
-			</div>
-			<div class="column_4 product">
-				<figure>
-					<img src="http://www.stuartslondon.com/images/brutus-shirt-trimfit-red-heritage-tartan-shirt-p1871-10354_zoom.jpg" />
-				</figure>
-				<p>
-					Camiseta Xadrez<br/>
-					<strong class="price"> R$ 150,00</strong>
-				</p>
-				<a href="#" class="button secondary tiny">
-					+ Detalhes
-				</a>
-			</div>
-			<div class="column_4 product">
-				<figure>
-					<img src="http://www.stuartslondon.com/images/brutus-shirt-trimfit-red-heritage-tartan-shirt-p1871-10354_zoom.jpg" />
-				</figure>
-				<p>
-					Camiseta Xadrez<br/>
-					<strong class="price"> R$ 150,00</strong>
-				</p>
-				<a href="#" class="button secondary tiny">
-					+ Detalhes
-				</a>
-			</div>
-			
-			<ul class="pagination">
-				<li class="prev"><a href="" class="button alert"><span class="icon chevron-left"></span> Anterior</a></li>
-				<li class="next"><a href="" class="button alert">Próxima <span class="icon chevron-right"></span></a></li>
-			</ul>
+		<div class="row padding-top">
+			<ui:insert name="content"></ui:insert>
 		</div>
 		
-		<h:outputScript name="js/tuktuk.js"  />
+		<!-- <h:outputScript name="js/tuktuk.js"  /> -->
+		<h:outputScript name="js/vendor/jquery.js"  />
+		<h:outputScript name="js/vendor/masked_input.js"  />
+		<h:outputScript name="js/app.js"  />
 	</h:body>
 </html>

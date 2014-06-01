@@ -1,1 +1,21 @@
-<h1>Login</h1>
+<?xml version="1.0"?>
+<ui:decorate template="/template/app.xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+											xmlns:c="http://java.sun.com/jsf/core"
+											xmlns:h="http://java.sun.com/jsf/html">
+
+
+    <ui:define name="content">
+   		<h:form class="column_5 offset_2 panel">
+  			<p class="margin-bottom">Por favor, informe seus dados de acesso.</p>
+			<label>E-mail: </label>
+			<input type="email" />
+			<label>Senha: </label>
+			<input type="password" />
+  			<h:commandButton value="Login" styleClass="button alert margin-top" />
+   		</h:form>
+   		<div class="column_3 margin-top text center" style="padding-top: 80px;">		
+   			<h5>Ainda não tem uma conta?</h5>
+   			<h:link styleClass="button margin-top" outcome="/sign_up">Cadastre-se!</h:link>	
+   		</div>
+    </ui:define>
+</ui:decorate>

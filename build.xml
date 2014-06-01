@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project name="shopping-ucs" basedir="." default="deploy">
 
-	<property name="jboss.dir" value="jboss-as-7.1.1.Final" />
+	<property name="jboss.dir" value="/Users/alesshh/Projects/java/jboss-as-7.1.1.Final" />
 	<property name="jboss.lib.dir" value="${jboss.dir}/modules" />
 	<property name="jboss.deploy" value="${jboss.dir}/standalone/deployments" />
 	<property name="bin.dir" value="bin" />
@@ -35,8 +35,8 @@
 	<target name="jar" depends="compile">
 		<jar jarfile="${dist.dir}/${ant.project.name}.jar" compress="true">
 			<zipfileset dir="${build.dir}">
-				<include name="com/ejb/**" />
-				<include name="com/client/**" />
+				<include name="br/ucs/shopping/models/**" />
+				<include name="br/ucs/shopping/ejb/**" />
 			</zipfileset>
 			<metainf dir="${meta.dir}">
 				<include name="persistence.xml" />
@@ -48,7 +48,7 @@
 	<target name="war" depends="compile">
 		<war basedir="${web.dir}" warfile="${dist.dir}/${ant.project.name}.war" webxml="${meta.dir}/web.xml">
 			<classes dir="${build.dir}">
-				<include name="br/ucs/shopping/beans/**" />
+				<include name="br/ucs/shopping/views/**" />
 			</classes>
 			<classes dir="${src.dir}">
 				<include name="*.properties" />

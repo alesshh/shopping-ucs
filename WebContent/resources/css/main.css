@@ -16,6 +16,17 @@ header {
 	padding-left: 40px;
 }
 
+.error, li.error, .info, li.info {
+	display: block;
+	background: #E74C3C !important;
+	color: white;
+	padding: 3px 10px !important;
+}
+
+.info, li.info {
+	background: #1ABC9C !important;
+}
+
 .brand a:before {
 	content: "";
 	width: 32px;
@@ -32,12 +43,31 @@ body form textarea:focus {
 	border-color: #D44537;
 }
 
+.clearfix {
+	display: block;
+	clear: both;
+}
+
+.half {
+	width: 50%;
+	box-sizing: border-box;
+	display: inline-block;
+	float: left;
+}
+
+.half.half-l {
+	padding-right: 10px;
+}
+
+.half.half-r {
+	padding-left: 10px;
+}
+
 /* Search */
 
 .search-bar {
 	position: relative;
 	padding: 20px;
-	margin: 20px;
 	border-radius: 5px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
@@ -54,14 +84,17 @@ body form textarea:focus {
 
 /* Product Item  */
 
-.product { 
+.panel, .product {
 	border-radius: 5px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	padding: 20px;
 	background: white;
-	margin-bottom: 20px;
 	border-bottom: 2px solid #ccc;
+}
+
+.product { 
+	margin-bottom: 20px;
 	position: relative;
 }
 

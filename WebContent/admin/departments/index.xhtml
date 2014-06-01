@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<ui:decorate template="/template/admin.xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+											xmlns:c="http://java.sun.com/jsf/core"
+											xmlns:h="http://java.sun.com/jsf/html"
+											xmlns:sh="http://java.sun.com/jsf/composite/shoppingUcs">
+
+	<ui:define name="admin_page_title">Departamentos</ui:define>
+    <ui:define name="admin_content">
+    	<h:form>
+	    	<p class="text right">
+	    		<h:commandLink action="form"
+	    					   actionListener="#{departmentBean.build}"
+	    					   styleClass="icon add button tiny"
+	    					   value=" Novo" />
+	    	</p>
+	    	<h:dataTable value="#{departmentBean.entities}" var="d">
+	    		<h:column>
+	    			<c:facet name="header">ID</c:facet>
+	    			#{d.id}
+	    		</h:column>
+	    		<h:column>
+	    			<c:facet name="header">Nome</c:facet>
+	    			#{d.name}
+	    		</h:column>
+	    		<h:column>
+	    			<p class="text right">
+	    				<h:commandLink action="form"
+	    							   actionListener="#{departmentBean.edit(d)}"
+	    							   styleClass="icon edit button secondary tiny margin-right"
+	    							   value=" Editar" />
+	    				<h:commandLink action="index"
+	    							   actionListener="#{departmentBean.remove(d)}"
+	    							   styleClass="icon remove button alert tiny"
+	    							   onclick="javascript: return window.confirm('Tem certeza que deseja remover este item?');"
+	    							   value=" Excluir"/>
+	    			</p>	    			
+	    		</h:column>
+	    	</h:dataTable>
+    	</h:form>
+	    
+    </ui:define>
+ </ui:decorate>

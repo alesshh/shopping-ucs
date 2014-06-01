@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<ui:decorate template="/template/app.xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+											xmlns:c="http://java.sun.com/jsf/core"
+											xmlns:h="http://java.sun.com/jsf/html"
+											xmlns:sh="http://java.sun.com/jsf/composite/shoppingUcs">
+
+
+    <ui:define name="content">
+    	<div class="column_8 offset_2 panel">
+    		<h:form>
+    			<p class="margin-bottom">Para criar sua conta, informe os dados abaixo.</p>
+    			
+	    		<div class="half half-l">
+	    			<sh:textField label="Nome" fieldId="name" value="#{signUpBean.user.name}" required="true"  />
+	    			<sh:emailField label="E-mail" fieldId="email" value="#{signUpBean.user.email}" required="true"  />
+	    			<sh:passwordField label="Senha" fieldId="password" value="#{signUpBean.user.password}" required="true"  />
+	    			<sh:dateField label="Data de Nascimento" fieldId="birth" value="#{signUpBean.user.birth}" required="true" />
+	    			<sh:phoneField label="Telefone" fieldId="phone" value="#{signUpBean.user.phone}" required="true" />	    			
+	    			<sh:textField label="Logradouro" fieldId="street" value="#{signUpBean.user.address.street}" required="true"  />
+	    		</div>
+	    		
+	    		<div class="half half-r">
+	    			<sh:textField label="Número" fieldId="number" value="#{signUpBean.user.address.number}" required="true"  />
+	    			<sh:textField label="Complemento" fieldId="adjunct" value="#{signUpBean.user.address.adjunct}"  />
+ 			  		<sh:zipField label="CEP:" fieldId="zipcode" value="#{signUpBean.user.address.zipcode}" required="true"  />
+ 			  		<sh:textField label="Cidade" fieldId="city" value="#{signUpBean.user.address.city}" required="true"  />
+ 			  		<sh:textField label="Estado" fieldId="state" value="#{signUpBean.user.address.state}" required="true"  />
+	    		</div>
+	    		
+	    		<br class="clearfix"/>
+	    		
+  				<h:commandButton value="Cadastrar" styleClass="button alert margin-top" action="#{signUpBean.save}"/>
+  				<p style="float: right; margin-top: 25px;">
+  					Já tem uma conta? <h:link outcome="/login" styleClass="theme color">Faça o Login!</h:link>
+  				</p>
+    		</h:form>
+    	</div>
+    </ui:define>
+</ui:decorate>

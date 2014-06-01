@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<ui:decorate template="/template/app.xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+											xmlns:c="http://java.sun.com/jsf/core"
+											xmlns:h="http://java.sun.com/jsf/html"
+											xmlns:sh="http://java.sun.com/jsf/composite/shoppingUcs">
+
+
+    <ui:define name="content">
+    	<div class="column_6 offset_3 panel">
+    		<h5>Admin » <ui:insert name="admin_page_title" /></h5>
+    		<h:messages globalOnly="true"  errorClass="margin-top error margin-bottom" infoClass="info margin-top margin-bottom" />
+    		<ui:insert name="admin_content" />
+    	</div>
+    	
+    	<div class="column_2 side_nav">
+    		<h6>Menu</h6>
+    		<hr/>
+    		<ul>
+    			<li>
+    				<h:form>
+    					<h:commandLink action="/admin/departments/index" 
+    								   	actionListener="#{departmentBean.loadEntities}" 
+    								 	value="Departamentos"
+    								 	styleClass="theme color"/>
+    				</h:form>
+<!--     			<h:link outcome="/admin/departments/index"  styleClass="theme color">Departamentos</h:link></li> -->
+				</li>
+    		</ul>
+    	</div>
+    	
+    	
+    </ui:define>
+ </ui:decorate>

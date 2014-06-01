@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE HTML>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:c="http://java.sun.com/jsf/composite">
+	<c:interface>
+		<c:attribute name="fieldId" />
+		<c:attribute name="label" />
+	</c:interface>
+	
+	<c:implementation>
+		<h:outputLabel value="#{cc.attrs.label}" for="#{cc.attrs.fieldId}" />
+		<c:insertChildren />
+		<h:message for="#{cc.attrs.fieldId}" errorClass="error margin-bottom"/>
+	</c:implementation>
+</html>

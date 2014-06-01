@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE HTML>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:c="http://java.sun.com/jsf/composite"
+	  xmlns:cr="http://java.sun.com/jsf/core"
+	  xmlns:sh="http://java.sun.com/jsf/composite/shoppingUcs">
+	<c:interface>
+		<c:attribute name="bean" required="true" />
+	</c:interface>
+	
+	<c:implementation>
+		<h:commandButton value="Salvar" action="#{cc.attrs.bean.save}" styleClass="button alert margin-top margin-right" />
+   		<h:link outcome="index" styleClass="icon remove" value=" Cancelar" />
+	</c:implementation>
+</html>

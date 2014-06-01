@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<ui:decorate template="/template/admin.xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+											xmlns:c="http://java.sun.com/jsf/core"
+											xmlns:h="http://java.sun.com/jsf/html"
+											xmlns:sh="http://java.sun.com/jsf/composite/shoppingUcs">
+
+	<ui:define name="admin_page_title">Departamentos</ui:define>
+    <ui:define name="admin_content">
+    	<h:form styleClass="margin-top">
+    		<h:inputHidden value="#{departmentBean.entity.id}"/>
+    		<sh:textField fieldId="name" label="Nome" value="#{departmentBean.entity.name}" required="true" />
+    		<sh:formActions bean="#{departmentBean}" />
+    	</h:form>
+    </ui:define>
+ </ui:decorate>

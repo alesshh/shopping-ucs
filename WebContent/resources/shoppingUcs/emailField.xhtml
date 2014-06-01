@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE HTML>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:c="http://java.sun.com/jsf/composite"
+	  xmlns:cr="http://java.sun.com/jsf/core"
+	  xmlns:sh="http://java.sun.com/jsf/composite/shoppingUcs">
+	<c:interface>
+		<c:attribute name="label" />
+		<c:attribute name="fieldId" />
+		<c:attribute name="required" />
+	</c:interface>
+	
+	<c:implementation>
+		<sh:fieldWrapper label="#{cc.attrs.label}" fieldId="#{cc.attrs.fieldId}">
+			<h:inputText required="#{cc.attrs.required}"
+						 value="#{cc.attrs.value}"
+						 id="#{cc.attrs.fieldId}"
+						 requiredMessage="não pode ficar em branco"
+						 validatorMessage="não é válido">
+				<cr:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+			</h:inputText>
+		</sh:fieldWrapper>
+	</c:implementation>
+</html>
