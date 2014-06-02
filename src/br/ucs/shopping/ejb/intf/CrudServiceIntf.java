@@ -4,12 +4,20 @@ import java.util.List;
 
 import javax.ejb.Remote;
 
+import br.ucs.shopping.models.PaginatedRecords;
+
 @Remote
 public interface CrudServiceIntf<T> {
 	/**
 	 * @return
 	 */
 	public List<T> list();
+	
+	/**
+	 * @param current
+	 * @return
+	 */
+	public PaginatedRecords<T> list(int currentPage, int maxResults);
 
 	/**
 	 * @param id

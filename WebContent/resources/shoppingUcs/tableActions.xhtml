@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE HTML>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:c="http://java.sun.com/jsf/composite"
+	  xmlns:cr="http://java.sun.com/jsf/core"
+	  xmlns:sh="http://java.sun.com/jsf/composite/shoppingUcs">
+	<c:interface>
+		<c:attribute name="bean" />
+		<c:attribute name="entity" />
+	</c:interface>
+	
+	<c:implementation>
+		<p class="text right">
+			<h:commandLink action="form"
+						   actionListener="#{cc.attrs.bean.edit(cc.attrs.entity)}"
+						   styleClass="icon edit button secondary tiny margin-right"
+						   value=" Editar" />
+ 			<h:commandLink action="index"
+  						   actionListener="#{cc.attrs.bean.remove(cc.attrs.entity)}"
+  						   styleClass="icon remove button alert tiny"
+						   onclick="javascript: return window.confirm('Tem certeza que deseja remover este item?');"
+						   value=" Excluir"/>
+		</p>
+	</c:implementation>
+</html>

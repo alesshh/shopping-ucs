@@ -10,6 +10,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import br.ucs.shopping.ejb.intf.CrudServiceIntf;
+import br.ucs.shopping.models.PaginatedRecords;
 
 public abstract class AbstractCrudService<T> implements CrudServiceIntf<T> {
 
@@ -29,10 +30,30 @@ public abstract class AbstractCrudService<T> implements CrudServiceIntf<T> {
 	 */
 	@Override
 	public List<T> list() {
-		Query q = em.createNamedQuery(getTypeClazz().getSimpleName().toString()
-				+ ".all");
+		Query q = getAllQuery();
 
 		return q.getResultList();
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see CrudServiceIntf#list(int, int)
+	 */
+	public PaginatedRecords<T> list(int currentPage, int maxResults) {
+		Query queryCount = getCountAllQuery();
+		Long total = (Long) queryCount.getSingleResult();
+
+		PaginatedRecords<T> pagination = new PaginatedRecords<T>(
+				total.intValue(), currentPage, maxResults);
+
+		Query query = getAllQuery();
+		query.setFirstResult(pagination.offset());
+		query.setMaxResults(maxResults);
+
+		pagination.setCollection(query.getResultList());
+
+		return pagination;
 	}
 
 	/*
@@ -122,4 +143,19 @@ public abstract class AbstractCrudService<T> implements CrudServiceIntf<T> {
 		return clazz;
 	}
 
+	/**
+	 * @return
+	 */
+	protected Query getAllQuery() {
+		return em.createNamedQuery(getTypeClazz().getSimpleName().toString()
+				+ ".all");
+	}
+
+	/**
+	 * @return
+	 */
+	protected Query getCountAllQuery() {
+		return em.createNamedQuery(getTypeClazz().getSimpleName().toString()
+				+ ".countAll");
+	}
 }

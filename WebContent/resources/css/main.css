@@ -137,3 +137,7 @@ body form textarea:focus {
 	margin-left: 0.5em;
 }
 
+
+.button .icon {
+	margin-right: 0 !important;
+}

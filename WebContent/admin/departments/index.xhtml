@@ -23,19 +23,10 @@
 	    			#{d.name}
 	    		</h:column>
 	    		<h:column>
-	    			<p class="text right">
-	    				<h:commandLink action="form"
-	    							   actionListener="#{departmentBean.edit(d)}"
-	    							   styleClass="icon edit button secondary tiny margin-right"
-	    							   value=" Editar" />
-	    				<h:commandLink action="index"
-	    							   actionListener="#{departmentBean.remove(d)}"
-	    							   styleClass="icon remove button alert tiny"
-	    							   onclick="javascript: return window.confirm('Tem certeza que deseja remover este item?');"
-	    							   value=" Excluir"/>
-	    			</p>	    			
+	    			<sh:tableActions bean="#{departmentBean}" entity="#{d}" />	    			
 	    		</h:column>
 	    	</h:dataTable>
+	    	<sh:pagination bean="#{departmentBean}"/>
     	</h:form>
 	    
     </ui:define>

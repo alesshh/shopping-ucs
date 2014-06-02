@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE HTML>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:c="http://java.sun.com/jsf/composite"
+	  xmlns:cr="http://java.sun.com/jsf/core"
+	  xmlns:sh="http://java.sun.com/jsf/composite/shoppingUcs">
+	<c:interface>
+		<c:attribute name="bean" required="true" />
+	</c:interface>
+	
+	<p class="text left"  style="float: left;">
+		<h:commandLink action="index" 
+    				   actionListener="#{cc.attrs.bean.prevPage}" 
+    				   styleClass="button tiny secondary margin-right"
+    				   rendered="#{cc.attrs.bean.prevPage}">
+	   		<span class="icon arrow-left"></span>
+    	</h:commandLink>
+		    	
+	   	<h:commandLink action="index" 
+    				   actionListener="#{cc.attrs.bean.nextPage}" 
+    				   styleClass="button tiny secondary"
+    				   rendered="#{cc.attrs.bean.nextPage}">
+    		<span class="icon arrow-right"></span>
+    	</h:commandLink>
+    </p>
+    <cr:verbatim rendered="#{cc.attrs.bean.entitiesCount > 0}">
+	    <p class="text right small" style="float: right;">
+	   		Exibindo #{cc.attrs.bean.offset} de #{cc.attrs.bean.entitiesCount}
+	   	</p>
+    </cr:verbatim>
+    
+    <cr:verbatim rendered="#{cc.attrs.bean.entitiesCount == 0}">
+	    <p class="text right small" style="float: right;">
+	   		Nenhum resultado encontrado.
+	   	</p>
+    </cr:verbatim>
+   	
+</html>

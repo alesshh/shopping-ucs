@@ -13,7 +13,8 @@ import javax.persistence.Table;
 @Entity
 @Table
 @NamedQueries({
-	@NamedQuery(name="Department.all", query="select d from Department as d order by d.id desc")
+	@NamedQuery(name="Department.all", query="select d from Department as d order by d.id desc"),
+	@NamedQuery(name="Department.countAll", query="select count(d) from Department as d")
 })
 public class Department implements Serializable {
 	/**
