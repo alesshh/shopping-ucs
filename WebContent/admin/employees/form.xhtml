@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<ui:decorate template="/template/admin.xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+											xmlns:c="http://java.sun.com/jsf/core"
+											xmlns:h="http://java.sun.com/jsf/html"
+											xmlns:sh="http://java.sun.com/jsf/composite/shoppingUcs">
+
+	<ui:define name="admin_page_title">Funcionários</ui:define>
+    <ui:define name="admin_content">
+    	<h:form styleClass="margin-top">
+    		<h:inputHidden value="#{employeeBean.entity.id}"/>
+    		<sh:textField fieldId="name" label="Nome" value="#{employeeBean.entity.name}" required="true" />
+    		<sh:textField fieldId="username" label="Usuário" value="#{employeeBean.entity.username}" required="true" />
+    		<sh:passwordField fieldId="pasword" label="Senha" value="#{employeeBean.entity.password}" required="true" />
+    		<sh:dateField fieldId="birthDate" label="Data de Nascimento" value="#{employeeBean.entity.birthDate}" required="true" />
+    		<sh:phoneField fieldId="phone" label="Telefone" value="#{employeeBean.entity.phone}" required="true" />
+    		
+    		<sh:boolField fieldId="master" label="Supervisor?" value="#{employeeBean.entity.master}" />
+    		
+    		<sh:resourceSelect fieldId="department" required="true" label="Departamento" value="#{employeeBean.entity.department.id}">
+ 		    	<c:selectItems value="#{employeeBean.departments}" var="m" itemValue="#{m.id}" itemLabel="#{m.name}" />
+ 		    </sh:resourceSelect>
+    		
+    		<sh:textField fieldId="street" label="Rua" value="#{employeeBean.entity.address.street}" required="true" />
+    		<sh:integerField fieldId="number" label="Número" value="#{employeeBean.entity.address.number}" required="true" />
+    		<sh:zipField fieldId="zip" label="CEP" value="#{employeeBean.entity.address.zipcode}" required="true" />
+    		<sh:textField fieldId="city" label="Cidade" value="#{employeeBean.entity.address.city}" required="true" />
+    		<sh:textField fieldId="state" label="Estado" value="#{employeeBean.entity.address.state}" required="true" />
+    		<sh:textField fieldId="adjunct" label="Complemento" value="#{employeeBean.entity.address.adjunct}" />
+    		
+    		
+
+    		<sh:formActions bean="#{employeeBean}" />
+    	</h:form>
+    </ui:define>
+    
+ </ui:decorate>

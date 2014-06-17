@@ -4,9 +4,9 @@
 											xmlns:h="http://java.sun.com/jsf/html"
 											xmlns:sh="http://java.sun.com/jsf/composite/shoppingUcs">
 
-	<ui:define name="admin_page_title">Departamentos</ui:define>
+	<ui:define name="admin_page_title">Produtos</ui:define>
     <ui:define name="admin_content">
-    	<sh:collectionTable bean="#{departmentBean}">
+    	<sh:collectionTable bean="#{productBean}">
     		<h:column>
     			<c:facet name="header">ID</c:facet>
     			#{row.id}
@@ -15,8 +15,16 @@
     			<c:facet name="header">Nome</c:facet>
     			#{row.name}
     		</h:column>	
+    		<h:column>    		
+    			#{row.stock.amount}
+    			<c:facet name="header">Estoque</c:facet>
+    		</h:column>
+    		<h:column>    		
+    			R$ #{row.stock.price}
+    			<c:facet name="header">Preço</c:facet>
+    		</h:column>
     		<h:column>
-    			<sh:tableActions bean="#{departmentBean}" entity="#{row}" />
+    			<sh:tableActions bean="#{productBean}" entity="#{row}" />
     		</h:column>
  		</sh:collectionTable>
     </ui:define>

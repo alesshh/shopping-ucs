@@ -2,7 +2,6 @@
 <!DOCTYPE HTML>
 <html xmlns:h="http://java.sun.com/jsf/html"
 	  xmlns:c="http://java.sun.com/jsf/composite"
-	  xmlns:cr="http://java.sun.com/jsf/core"
 	  xmlns:sh="http://java.sun.com/jsf/composite/shoppingUcs">
 	<c:interface>
 		<c:attribute name="label" />
@@ -12,13 +11,13 @@
 	
 	<c:implementation>
 		<sh:fieldWrapper label="#{cc.attrs.label}" fieldId="#{cc.attrs.fieldId}">
-			<h:inputText required="#{cc.attrs.required}"
+			<h:inputTextarea required="#{cc.attrs.required}"
 						 value="#{cc.attrs.value}"
 						 id="#{cc.attrs.fieldId}"
-						 styleClass="date"
-						 requiredMessage="não pode ficar em branco">
-				<cr:convertDateTime pattern="dd/MM/yyyy" />
-			</h:inputText>
+						 requiredMessage="não pode ficar em branco"
+						 rows="5">
+				<c:insertChildren />
+			</h:inputTextarea>
 		</sh:fieldWrapper>
 	</c:implementation>
 </html>

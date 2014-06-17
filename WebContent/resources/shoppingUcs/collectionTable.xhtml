@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE HTML>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:c="http://java.sun.com/jsf/composite"
+	  xmlns:cr="http://java.sun.com/jsf/core"
+	  xmlns:sh="http://java.sun.com/jsf/composite/shoppingUcs">
+	<c:interface>
+		<c:attribute name="bean" />
+	</c:interface>
+	
+	<c:implementation>
+		<h:form>
+			<p class="text right">
+	    		<h:commandLink action="form"
+	    					   actionListener="#{cc.attrs.bean.build}"
+	    					   styleClass="icon add button tiny"
+	    					   value=" Novo" />
+	    	</p>
+	    	
+	    	<h:dataTable value="#{cc.attrs.bean.entities}" var="row">
+	    		<c:insertChildren />
+	    	</h:dataTable>
+	    	
+	    	<sh:pagination bean="#{cc.attrs.bean}"/>
+		</h:form>
+	</c:implementation>
+</html>

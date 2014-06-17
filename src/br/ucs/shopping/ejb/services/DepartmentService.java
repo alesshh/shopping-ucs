@@ -9,4 +9,5 @@ import br.ucs.shopping.models.Department;
 public class DepartmentService extends AbstractCrudService<Department>
 		implements DepartmentServiceIntf {
 
+		
 }

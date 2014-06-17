@@ -15,9 +15,10 @@
 			<h:inputText required="#{cc.attrs.required}"
 						 value="#{cc.attrs.value}"
 						 id="#{cc.attrs.fieldId}"
-						 styleClass="date"
-						 requiredMessage="não pode ficar em branco">
-				<cr:convertDateTime pattern="dd/MM/yyyy" />
+						 requiredMessage="não pode ficar em branco"
+						 converterMessage="não é um número">
+				<cr:convertNumber integerOnly="true" />
+				<c:insertChildren />
 			</h:inputText>
 		</sh:fieldWrapper>
 	</c:implementation>

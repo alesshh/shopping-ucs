@@ -8,9 +8,10 @@ import javax.faces.context.FacesContext;
 
 import br.ucs.shopping.ejb.intf.CrudServiceIntf;
 import br.ucs.shopping.models.PaginatedRecords;
+import br.ucs.shopping.models.Manufacturer;
 
 public abstract class AbstractBean<T> {
-	final int PAGINATION = 12;
+	final int PAGINATION = 6;
 	private T entity;
 	private List<T> entities;
 	private int currentPage = 1;

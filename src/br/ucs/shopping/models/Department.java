@@ -6,16 +6,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table
-@NamedQueries({
-	@NamedQuery(name="Department.all", query="select d from Department as d order by d.id desc"),
-	@NamedQuery(name="Department.countAll", query="select count(d) from Department as d")
-})
 public class Department implements Serializable {
 	/**
 	 * 
@@ -23,12 +20,13 @@ public class Department implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(generator="department_sq")
+	@SequenceGenerator(name="department_sq", sequenceName="department_sq")
 	private Integer id;
 
 	@Column
 	private String name;
-
+	
 	/**
 	 * 
 	 */

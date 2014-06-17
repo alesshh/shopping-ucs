@@ -3,7 +3,8 @@
 <html xmlns:h="http://java.sun.com/jsf/html"
 	  xmlns:c="http://java.sun.com/jsf/composite"
 	  xmlns:cr="http://java.sun.com/jsf/core"
-	  xmlns:sh="http://java.sun.com/jsf/composite/shoppingUcs">
+	  xmlns:sh="http://java.sun.com/jsf/composite/shoppingUcs"
+	  xmlns:t="http://myfaces.apache.org/tomahawk">
 	<c:interface>
 		<c:attribute name="label" />
 		<c:attribute name="fieldId" />
@@ -12,13 +13,12 @@
 	
 	<c:implementation>
 		<sh:fieldWrapper label="#{cc.attrs.label}" fieldId="#{cc.attrs.fieldId}">
-			<h:inputText required="#{cc.attrs.required}"
-						 value="#{cc.attrs.value}"
-						 id="#{cc.attrs.fieldId}"
-						 styleClass="date"
-						 requiredMessage="não pode ficar em branco">
-				<cr:convertDateTime pattern="dd/MM/yyyy" />
-			</h:inputText>
-		</sh:fieldWrapper>
+		<!-- <h:inputFile required="#{cc.attrs.required}"
+					 value="#{cc.attrs.value}"
+					 id="#{cc.attrs.fieldId}"
+					 requiredMessage="não pode ficar em branco" /> -->
+		<!-- <h:graphicImage value="#{cc.attrs.value}" /> -->
+		<t:inputFileUpload required="true"></t:inputFileUpload>
+ 		</sh:fieldWrapper>
 	</c:implementation>
 </html>

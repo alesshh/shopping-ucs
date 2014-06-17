@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<ui:decorate template="/template/admin.xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+											xmlns:c="http://java.sun.com/jsf/core"
+											xmlns:h="http://java.sun.com/jsf/html"
+											xmlns:sh="http://java.sun.com/jsf/composite/shoppingUcs">
+
+	<ui:define name="admin_page_title">Produtos</ui:define>
+    <ui:define name="admin_content">
+    	<h:form styleClass="margin-top">
+    		<h:inputHidden value="#{productBean.entity.id}"/>
+    		<sh:textField fieldId="name" label="Nome" value="#{productBean.entity.name}" required="true" />
+    		<sh:textField fieldId="imageUrl" label="URL da Imagem" value="#{productBean.entity.imageUrl}" required="true" />
+ 		    <sh:textareaField fieldId="description" label="Descrição" value="#{productBean.entity.description}" required="true" />
+ 		    <sh:resourceSelect fieldId="manufacturer" required="true" label="Fabricante" value="#{productBean.entity.manufacturer.id}">
+ 		    	<c:selectItems value="#{productBean.manufacturers}" var="m" itemValue="#{m.id}" itemLabel="#{m.name}" />
+ 		    </sh:resourceSelect>
+ 		    
+ 		    <sh:integerField fieldId="amount" label="Estoque" value="#{productBean.entity.stock.amount}" required="true" />
+ 		    <sh:currencyField fieldId="price" label="Preço" value="#{productBean.entity.stock.price}" required="true" />
+    		
+    		<sh:formActions bean="#{productBean}" />
+    	</h:form>
+    </ui:define>
+    
+ </ui:decorate>

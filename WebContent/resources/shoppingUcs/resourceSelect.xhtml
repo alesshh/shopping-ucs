@@ -8,17 +8,18 @@
 		<c:attribute name="label" />
 		<c:attribute name="fieldId" />
 		<c:attribute name="required" />
+		<c:attribute name="relationBean" />
 	</c:interface>
 	
 	<c:implementation>
 		<sh:fieldWrapper label="#{cc.attrs.label}" fieldId="#{cc.attrs.fieldId}">
-			<h:inputText required="#{cc.attrs.required}"
-						 value="#{cc.attrs.value}"
-						 id="#{cc.attrs.fieldId}"
-						 styleClass="date"
-						 requiredMessage="não pode ficar em branco">
-				<cr:convertDateTime pattern="dd/MM/yyyy" />
-			</h:inputText>
+			<h:selectOneMenu value="#{cc.attrs.value}" 
+							 required="#{cc.attrs.required}"
+							 id="#{cc.attrs.fieldId}" 
+							 requiredMessage="não pode ficar em branco">
+				<cr:selectItem itemLabel="Selecione" noSelectionOption="true" />
+				<c:insertChildren />
+			</h:selectOneMenu>
 		</sh:fieldWrapper>
 	</c:implementation>
 </html>

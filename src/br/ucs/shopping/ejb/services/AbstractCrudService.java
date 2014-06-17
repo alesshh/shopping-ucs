@@ -146,16 +146,23 @@ public abstract class AbstractCrudService<T> implements CrudServiceIntf<T> {
 	/**
 	 * @return
 	 */
+	private String getTypeName() {
+		return getTypeClazz().getSimpleName().toString();
+	}
+
+	/**
+	 * @return
+	 */
 	protected Query getAllQuery() {
-		return em.createNamedQuery(getTypeClazz().getSimpleName().toString()
-				+ ".all");
+		return em.createQuery("SELECT a FROM " + getTypeName()
+				+ " as a order by a.id desc", getTypeClazz());
 	}
 
 	/**
 	 * @return
 	 */
 	protected Query getCountAllQuery() {
-		return em.createNamedQuery(getTypeClazz().getSimpleName().toString()
-				+ ".countAll");
+		return em
+				.createQuery("SELECT COUNT(a) FROM " + getTypeName() + " as a");
 	}
 }

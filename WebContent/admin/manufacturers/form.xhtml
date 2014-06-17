@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<ui:decorate template="/template/admin.xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+											xmlns:c="http://java.sun.com/jsf/core"
+											xmlns:h="http://java.sun.com/jsf/html"
+											xmlns:sh="http://java.sun.com/jsf/composite/shoppingUcs">
+
+	<ui:define name="admin_page_title">Fabricantes</ui:define>
+    <ui:define name="admin_content">
+    	<h:form styleClass="margin-top">
+    		<h:inputHidden value="#{manufacturerBean.entity.id}"/>
+    		<sh:textField fieldId="name" label="Nome" value="#{manufacturerBean.entity.name}" required="true" />
+    		<sh:cnpjField fieldId="cnpj" label="CNPJ" value="#{manufacturerBean.entity.cnpj}" required="true" />
+    		<sh:phoneField fieldId="phone" label="Telefone" value="#{manufacturerBean.entity.phone}" required="true" />
+    		<sh:textField fieldId="street" label="Rua" value="#{manufacturerBean.entity.address.street}" required="true" />
+    		<sh:integerField fieldId="number" label="Número" value="#{manufacturerBean.entity.address.number}" required="true" />
+    		<sh:zipField fieldId="zip" label="CEP" value="#{manufacturerBean.entity.address.zipcode}" required="true" />
+    		<sh:textField fieldId="city" label="Cidade" value="#{manufacturerBean.entity.address.city}" required="true" />
+    		<sh:textField fieldId="state" label="Estado" value="#{manufacturerBean.entity.address.state}" required="true" />
+    		<sh:textField fieldId="adjunct" label="Complemento" value="#{manufacturerBean.entity.address.adjunct}" />
+
+    		<sh:formActions bean="#{manufacturerBean}" />
+    	</h:form>
+    </ui:define>
+    
+ </ui:decorate>
