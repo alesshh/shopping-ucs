@@ -59,6 +59,47 @@ public abstract class AbstractCrudService<T> implements CrudServiceIntf<T> {
 	/*
 	 * (non-Javadoc)
 	 * 
+	 * @see CrudServiceIntf#search(Integer, String, int, int)
+	 */
+	public PaginatedRecords<T> search(Integer code, String name,
+			int currentPage, int maxResults) {
+		Query queryCount;
+		Query query;
+
+		if (code != null && code > 0) {
+			queryCount = em.createQuery("SELECT COUNT(a) FROM " + getTypeName()
+					+ " as a WHERE a.id = :code");
+			query = em.createQuery("SELECT a FROM " + getTypeName()
+					+ " as a WHERE a.id = :code");
+
+			queryCount.setParameter("code", code);
+			query.setParameter("code", code);
+		} else {
+			queryCount = em.createQuery("SELECT COUNT(a) FROM " + getTypeName()
+					+ " as a WHERE lower(a.name) like lower(:name)");
+			query = em.createQuery("SELECT a FROM " + getTypeName()
+					+ " as a WHERE lower(a.name) like lower(:name)");
+
+			queryCount.setParameter("name", '%' + name.toString() + '%');
+			query.setParameter("name", '%' + name.toString() + '%');
+		}
+
+		Long total = (Long) queryCount.getSingleResult();
+
+		PaginatedRecords<T> pagination = new PaginatedRecords<T>(
+				total.intValue(), currentPage, maxResults);
+
+		query.setFirstResult(pagination.offset());
+		query.setMaxResults(maxResults);
+
+		pagination.setCollection(query.getResultList());
+
+		return pagination;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see CrudServiceIntf#find(Integer)
 	 */
 	@Override

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE HTML>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:c="http://java.sun.com/jsf/composite"
+	  xmlns:cr="http://java.sun.com/jsf/core"
+	  xmlns:sh="http://java.sun.com/jsf/composite/shoppingUcs">
+	<c:interface>
+		<c:attribute name="bean" required="true" />
+	</c:interface>
+	
+	<c:implementation>
+		<div class="column_3">
+			<h5>Pesquisar</h5>
+			<hr/>
+			
+			<h:form>
+				<sh:integerField fieldId="idSearch" value="#{cc.attrs.bean.idSearch}" label="Código" />
+    			<sh:textField fieldId="nameSearch" value="#{cc.attrs.bean.nameSearch}" label="Nome" />
+				
+				<h:commandButton value="Pesquisar" action="#{cc.attrs.bean.search}" styleClass="button margin-top margin-right" />
+				<h:commandLink value="Limpar" action="#{cc.attrs.bean.clearSearch}" styleClass="icon remove" />
+			</h:form>
+		</div>
+	</c:implementation>
+</html>

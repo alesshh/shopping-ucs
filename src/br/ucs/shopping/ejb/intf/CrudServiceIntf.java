@@ -12,7 +12,7 @@ public interface CrudServiceIntf<T> {
 	 * @return
 	 */
 	public List<T> list();
-	
+
 	/**
 	 * @param current
 	 * @return
@@ -20,11 +20,21 @@ public interface CrudServiceIntf<T> {
 	public PaginatedRecords<T> list(int currentPage, int maxResults);
 
 	/**
+	 * @param code
+	 * @param query
+	 * @param currentPage
+	 * @param maxResults
+	 * @return
+	 */
+	public PaginatedRecords<T> search(Integer code, String query,
+			int currentPage, int maxResults);
+
+	/**
 	 * @param id
 	 * @return
 	 */
 	public T find(Integer id);
-	
+
 	/**
 	 * @param entity
 	 * @return
@@ -42,13 +52,12 @@ public interface CrudServiceIntf<T> {
 	 */
 	public T save(T entity);
 
-
 	/**
 	 * @param entity
 	 * @return
 	 */
 	public boolean destroy(T entity);
-	
+
 	/**
 	 * @param id
 	 * @return

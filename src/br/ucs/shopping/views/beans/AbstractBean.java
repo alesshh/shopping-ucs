@@ -20,6 +20,9 @@ public abstract class AbstractBean<T> {
 	private int entitiesCount;
 	private int offset;
 
+	private Integer idSearch;
+	private String nameSearch;
+
 	/**
 	 * @return
 	 */
@@ -52,7 +55,14 @@ public abstract class AbstractBean<T> {
 	public void loadEntities(int page) {
 		this.currentPage = page;
 
-		PaginatedRecords<T> pagination = getcrudService().list(currentPage, PAGINATION);
+		PaginatedRecords<T> pagination;
+
+		if ((idSearch != null && idSearch > 0) || (nameSearch != null && !nameSearch.isEmpty())) {
+			pagination = getcrudService().search(idSearch, nameSearch,
+					currentPage, PAGINATION);
+		} else {
+			pagination = getcrudService().list(currentPage, PAGINATION);
+		}
 
 		this.entities = pagination.getCollection();
 		this.nextPage = pagination.hasNextPage();
@@ -60,14 +70,14 @@ public abstract class AbstractBean<T> {
 		this.entitiesCount = pagination.getTotal();
 		this.offset = pagination.offset() + this.entities.size();
 	}
-	
+
 	/**
 	 * 
 	 */
 	public void nextPage() {
 		this.loadEntities(this.currentPage + 1);
 	}
-	
+
 	/**
 	 * 
 	 */
@@ -87,6 +97,30 @@ public abstract class AbstractBean<T> {
 	 */
 	public void edit(T entity) {
 		this.entity = entity;
+	}
+
+	/**
+	 * 
+	 */
+	public String search() {
+		this.currentPage = 1;
+
+		this.loadEntities();
+		
+		return "index";
+	}
+
+	/**
+	 * 
+	 */
+	public String clearSearch() {
+		this.currentPage = 1;
+		this.idSearch = null;
+		this.nameSearch = null;
+		
+		this.loadEntities();
+		
+		return "index";
 	}
 
 	/**
@@ -113,19 +147,47 @@ public abstract class AbstractBean<T> {
 	public boolean getPrevPage() {
 		return prevPage;
 	}
-	
+
 	/**
 	 * @return
 	 */
 	public int getOffset() {
 		return offset;
 	}
-	
+
 	/**
 	 * @return
 	 */
 	public int getEntitiesCount() {
 		return entitiesCount;
+	}
+
+	/**
+	 * @return
+	 */
+	public Integer getIdSearch() {
+		return idSearch;
+	}
+
+	/**
+	 * @param id
+	 */
+	public void setIdSearch(Integer id) {
+		this.idSearch = id;
+	}
+
+	/**
+	 * @return
+	 */
+	public String getNameSearch() {
+		return nameSearch;
+	}
+
+	/**
+	 * @param name
+	 */
+	public void setNameSearch(String name) {
+		this.nameSearch = name;
 	}
 
 	/**
