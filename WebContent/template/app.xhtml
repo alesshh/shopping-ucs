@@ -25,6 +25,9 @@
 				<nav class="column_8 text right" data-tuktuk="menu">
 					<h:link styleClass="button tiny icon shopping-cart" outcome="/checkout.xhtml"> Carrinho</h:link>
 					<h:link styleClass="button secondary tiny icon signin" outcome="/login"> Login</h:link>
+          <h:form>
+            <h:commandLink styleClass="button secondary tiny icon signout" value="Logout" action="#{logoutBean.logout()}"/>
+          </h:form>
 					<h:link styleClass="button secondary tiny icon pencil" outcome="/admin/index"> Admin</h:link>	
  				</nav>
 			</div>
