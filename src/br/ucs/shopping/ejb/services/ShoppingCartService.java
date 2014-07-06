@@ -25,6 +25,14 @@ public class ShoppingCartService implements ShoppingCartIntf {
 		this.items = new ArrayList<Item>();
 	}
 
+	public void setItems(List<Item> items){
+	    this.items = items;
+	}
+
+	public List<Item> getItems(){
+	    return this.items;
+	}
+
 	public void addProduct(Product product, Integer amount){
 		Stock stock = product.getStock();
 		if (amount > stock.getAmount()) {
@@ -36,13 +44,25 @@ public class ShoppingCartService implements ShoppingCartIntf {
 	}
 
 	public boolean checkout(Customer customer, CreditCard creditCard){
-	    // Código infalível
-	    // TODO: falhar
 	    for(Item item : this.items){
 	        Stock stock = item.getProduct().getStock();
 	        stock.setAmount(stock.getAmount() - item.getAmount());
 	    }
-        Request request = new Request(new Integer(customer.getRequests().size()+1), new Date(), new Double(30));
+	    Double shoppingFee;
+	    switch(this.items.size()){
+	        case 1:
+                shoppingFee = new Double(10);
+                break;
+	        case 2:
+                shoppingFee = new Double(15);
+                break;
+	        case 3:
+                shoppingFee = new Double(30);
+                break;
+            default:
+                shoppingFee = new Double(0);
+	    }
+        Request request = new Request(new Integer(customer.getRequests().size()+1), new Date(), shoppingFee);
         request.setCreditCard(creditCard);
         request.setItems(this.items);
         entityManager.persist(request);

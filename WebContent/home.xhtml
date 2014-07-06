@@ -31,10 +31,6 @@
 							itemValue="#{m.id}" itemLabel="#{m.name}" />
 					</sh:resourceSelect>
 				</div>
-
-
-
-
 				<div class="column_12">
 					<h:commandButton value="Pesquisar" action="#{shoppingBean.search}"
 						styleClass="button margin-top margin-right" />
@@ -52,9 +48,9 @@
 					<br /> <strong class="price"><sh:currencyOutput
 							value="#{product.stock.price}" /></strong>
 				</p>
-				<!-- <a href="#" class="button secondary tiny">
-						+ Detalhes
-					</a> -->
+				<h:form>
+         <h:commandLink value="Comprar" styleClass="button alert tiny" action="#{shoppingCartBean.addProduct(product, 1)}"></h:commandLink>
+        </h:form>
 			</div>
 		</ui:repeat>
 
@@ -74,9 +70,8 @@
 
 				<li class="next"><h:commandLink action="/home"
 						actionListener="#{shoppingBean.nextPage}"
-						styleClass="button alert" rendered="#{shoppingBean.nextPage}">
-					   		Próxima <span class="icon chevron-right"></span>
-					</h:commandLink></li>
+						styleClass="button alert" rendered="#{shoppingBean.nextPage}"></h:commandLink>
+				</li>
 			</ul>
 		</h:form>
 	</ui:define>
