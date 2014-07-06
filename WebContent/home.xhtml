@@ -1,63 +1,84 @@
 <?xml version="1.0"?>
-<ui:decorate template="/template/app.xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
-											xmlns:c="http://java.sun.com/jsf/core"
-											xmlns:h="http://java.sun.com/jsf/html"
-											xmlns:sh="http://java.sun.com/jsf/composite/shoppingUcs">
+<ui:decorate template="/template/app.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:sh="http://java.sun.com/jsf/composite/shoppingUcs">
 
 
-    <ui:define name="content">
-			<div class="column_12 search-bar margin-bottom">
-				<h:form>
-					<sh:textField fieldId="nameSearch" value="#{shoppingBean.nameSearch}" label="O que você procura?" />
-				
-					<h:commandButton value="Pesquisar" action="#{shoppingBean.search}" styleClass="button margin-top margin-right" />
+	<ui:define name="content">
+		<div class="column_12 search-bar margin-bottom">
+			<h:form>
+				<div class="column_12">
+					<sh:textField fieldId="nameSearch"
+						value="#{shoppingBean.nameSearch}" label="O que você procura?" />
+				</div>
+
+				<div class="column_3">
+					<sh:currencyField fieldId="priceMin"
+						value="#{shoppingBean.priceMinSearch}" label="Preço Inicial" />
+				</div>
+
+				<div class="column_3">
+					<sh:currencyField fieldId="priceMax"
+						value="#{shoppingBean.priceMaxSearch}" label="Preço Final" />
+				</div>
+
+				<div class="column_3">
+					<sh:resourceSelect fieldId="manufacturer" label="Fabricante"
+						value="#{shoppingBean.manufacturerIdSearch}">
+						<c:selectItems value="#{productBean.manufacturers}" var="m"
+							itemValue="#{m.id}" itemLabel="#{m.name}" />
+					</sh:resourceSelect>
+				</div>
+
+
+
+
+				<div class="column_12">
+					<h:commandButton value="Pesquisar" action="#{shoppingBean.search}"
+						styleClass="button margin-top margin-right" />
 					<h:commandLink value="Limpar" action="#{shoppingBean.clearSearch}" />
-					<span class="icon search"></span>
-				</h:form>
-			</div>
-			<ui:repeat var="product" value="#{shoppingBean.getProducts()}">
-				<div class="column_4 product">
-					<figure>
-						<h:graphicImage alt="#{product.name}" url="#{product.imageUrl}" />
-					</figure>
-					<p>
-						<strong>#{product.name}</strong> - <small>#{product.manufacturer.name}</small><br/><br/>
-						
-						<strong class="price"><sh:currencyOutput value="#{product.stock.price}" /></strong>
-					</p>
-					<!-- <a href="#" class="button secondary tiny">
+				</div>
+			</h:form>
+		</div>
+		<ui:repeat var="product" value="#{shoppingBean.getProducts()}">
+			<div class="column_4 product">
+				<figure>
+					<h:graphicImage alt="#{product.name}" url="#{product.imageUrl}" />
+				</figure>
+				<p>
+					<strong>#{product.name}</strong> - <small>#{product.manufacturer.name}</small><br />
+					<br /> <strong class="price"><sh:currencyOutput
+							value="#{product.stock.price}" /></strong>
+				</p>
+				<!-- <a href="#" class="button secondary tiny">
 						+ Detalhes
 					</a> -->
-				</div>	
-			</ui:repeat>
-			
-			<c:verbatim rendered="#{shoppingBean.entitiesCount == 0}">
-			    <p class="column_12 text bold">Nenhum produto encontrado.</p>
-		    </c:verbatim>
-						
-			
-			<br class="clearfix" />
-			<h:form>
-				<ul class="pagination">
-					<li class="prev">
-						<h:commandLink action="/home"
-				    				   actionListener="#{shoppingBean.prevPage}" 
-				    				   styleClass="button alert"
-				    				   rendered="#{shoppingBean.prevPage}">
-					   		<span class="icon chevron-left"></span> Anterior
-				    	</h:commandLink>
-					</li>
-					
-					<li class="next">
-						<h:commandLink action="/home"
-				    				   actionListener="#{shoppingBean.nextPage}" 
-				    				   styleClass="button alert"
-				    				   rendered="#{shoppingBean.nextPage}">
+			</div>
+		</ui:repeat>
+
+		<c:verbatim rendered="#{shoppingBean.entitiesCount == 0}">
+			<p class="column_12 text bold">Nenhum produto encontrado.</p>
+		</c:verbatim>
+
+
+		<br class="clearfix" />
+		<h:form>
+			<ul class="pagination">
+				<li class="prev"><h:commandLink action="/home"
+						actionListener="#{shoppingBean.prevPage}"
+						styleClass="button alert" rendered="#{shoppingBean.prevPage}">
+						<span class="icon chevron-left"></span> Anterior
+				    	</h:commandLink></li>
+
+				<li class="next"><h:commandLink action="/home"
+						actionListener="#{shoppingBean.nextPage}"
+						styleClass="button alert" rendered="#{shoppingBean.nextPage}">
 					   		Próxima <span class="icon chevron-right"></span>
-				    	</h:commandLink>
-					</li>
-				</ul>
-			</h:form>
-    </ui:define>
+					</h:commandLink></li>
+			</ul>
+		</h:form>
+	</ui:define>
 
 </ui:decorate>

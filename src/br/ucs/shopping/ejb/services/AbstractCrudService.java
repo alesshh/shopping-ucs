@@ -15,7 +15,7 @@ import br.ucs.shopping.models.PaginatedRecords;
 public abstract class AbstractCrudService<T> implements CrudServiceIntf<T> {
 
 	@PersistenceContext(unitName = "shopping-ucs")
-	private EntityManager em;
+	protected EntityManager em;
 
 	/**
 	 * 

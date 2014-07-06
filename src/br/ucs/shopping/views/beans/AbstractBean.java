@@ -13,15 +13,15 @@ import br.ucs.shopping.models.Manufacturer;
 public abstract class AbstractBean<T> {
 	final int PAGINATION = 6;
 	private T entity;
-	private List<T> entities;
-	private int currentPage = 1;
-	private boolean nextPage;
-	private boolean prevPage;
-	private int entitiesCount;
-	private int offset;
+	protected List<T> entities;
+	protected int currentPage = 1;
+	protected boolean nextPage;
+	protected boolean prevPage;
+	protected int entitiesCount;
+	protected int offset;
 
-	private Integer idSearch;
-	private String nameSearch;
+	protected Integer idSearch;
+	protected String nameSearch;
 
 	/**
 	 * @return
@@ -57,7 +57,7 @@ public abstract class AbstractBean<T> {
 
 		PaginatedRecords<T> pagination;
 
-		if ((idSearch != null && idSearch > 0) || (nameSearch != null && !nameSearch.isEmpty())) {
+		if (hasIdSearch() || hasNameSearch()) {
 			pagination = getcrudService().search(idSearch, nameSearch,
 					currentPage, PAGINATION);
 		} else {
@@ -211,6 +211,20 @@ public abstract class AbstractBean<T> {
 		loadEntities();
 
 		return "index";
+	}
+	
+	/**
+	 * @return
+	 */
+	protected boolean hasNameSearch() {
+		return nameSearch != null && !nameSearch.isEmpty();
+	}
+	
+	/**
+	 * @return
+	 */
+	protected boolean hasIdSearch() {
+		return idSearch != null && idSearch > 0;
 	}
 
 	/**

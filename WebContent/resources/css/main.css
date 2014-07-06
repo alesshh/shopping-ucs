@@ -75,10 +75,13 @@ body form textarea:focus {
 	border-bottom: 2px solid #ccc;
 }
 
-.search-bar .icon {
-	position: absolute;
-	bottom: 85px;
-	right: 30px;
+.search-bar .column_12 {
+	width: 100%;
+	margin: 0;
+}
+
+.search-bar .column_3 {
+	margin-left: 0;
 }
 
 
