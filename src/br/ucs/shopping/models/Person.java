@@ -75,6 +75,27 @@ public class Person implements Serializable {
 	}
 
 	/**
+	 * @param name
+	 * @param birthDate
+	 * @param username
+	 * @param password
+	 * @param phone
+	 * @param address
+	 * @param role
+	 */
+	public Person(String name, Date birthDate, String username,
+			String password, String phone, Address address, Role role) {
+		super();
+		this.name = name;
+		this.birthDate = birthDate;
+		this.username = username;
+		this.password = password;
+		this.phone = phone;
+		this.address = address;
+		this.role = role.getName();
+	}
+
+	/**
 	 * @param id
 	 * @param name
 	 * @param birthDate

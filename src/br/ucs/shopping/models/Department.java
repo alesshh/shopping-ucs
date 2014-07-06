@@ -32,6 +32,14 @@ public class Department implements Serializable {
 	}
 
 	/**
+	 * @param name
+	 */
+	public Department(String name) {
+		super();
+		this.name = name;
+	}
+
+	/**
 	 * @param id
 	 * @param name
 	 */

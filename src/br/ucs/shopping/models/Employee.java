@@ -28,6 +28,24 @@ public class Employee extends Person {
 	}
 
 	/**
+	 * @param name
+	 * @param birthDate
+	 * @param username
+	 * @param password
+	 * @param phone
+	 * @param address
+	 * @param department
+	 * @param admin
+	 */
+	public Employee(String name, Date birthDate, String username,
+			String password, String phone, Address address,
+			Department department, boolean master) {
+		super(name, birthDate, username, password, phone, address,
+				(master ? Role.MASTER : Role.ADMIN));
+		this.department = department;
+	}
+
+	/**
 	 * @param id
 	 * @param name
 	 * @param birthDate
