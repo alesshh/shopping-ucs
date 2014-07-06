@@ -39,9 +39,6 @@ public class Store implements Serializable {
   private List<Customer> customers;
 
   @OneToOne(cascade = CascadeType.ALL)
-  private Stock stock;
-
-  @OneToOne(cascade = CascadeType.ALL)
   private Address address;
 
   @OneToMany(cascade = CascadeType.ALL)
@@ -105,14 +102,6 @@ public class Store implements Serializable {
 
   public List<Customer> getCustomers() {
     return customers;
-  }
-
-  public void setStock(Stock stock) {
-    this.stock = stock;
-  }
-
-  public Stock getStock() {
-    return stock;
   }
 
   public void setAddress(Address address) {

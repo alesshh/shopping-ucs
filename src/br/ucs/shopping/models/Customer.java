@@ -1,13 +1,16 @@
 package br.ucs.shopping.models;
 
+import java.util.ArrayList;
 import java.util.Date;
-
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
+import java.util.List;
+import javax.persistence.*;
 
 @Entity
 @DiscriminatorValue(value = "customer")
 public class Customer extends Person {
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Request> requests;
 
 	/**
 	 * 
@@ -19,6 +22,7 @@ public class Customer extends Person {
 	 */
 	public Customer() {
 		super();
+		this.requests = new ArrayList<Request>();
 	}
 
 	/**
@@ -34,5 +38,14 @@ public class Customer extends Person {
 			String password, String phone, Address address) {
 		super(id, name, birthDate, username, password, phone, address,
 				Role.USER);
+		this.requests = new ArrayList<Request>();
 	}
+
+    public void setRequests(List<Request> requests) {
+        this.requests = requests;
+    }
+
+    public List<Request> getRequests() {
+        return requests;
+    }
 }
