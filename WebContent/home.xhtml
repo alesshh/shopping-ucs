@@ -25,9 +25,11 @@
 						
 						<strong class="price"><sh:currencyOutput value="#{product.stock.price}" /></strong>
 					</p>
-					<!-- <a href="#" class="button secondary tiny">
-						+ Detalhes
-					</a> -->
+           <a href="#" class="button secondary tiny">
+           </a> 
+           <h:form>
+             <h:commandLink value="Comprar" action="#{shoppingCartBean.addProduct(product, 1)}"></h:commandLink>
+           </h:form>
 				</div>	
 			</ui:repeat>
 			

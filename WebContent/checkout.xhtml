@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<ui:decorate template="/template/app.xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+											xmlns:f="http://java.sun.com/jsf/core"
+											xmlns:h="http://java.sun.com/jsf/html"
+											xmlns:sh="http://java.sun.com/jsf/composite/shoppingUcs">
+
+  <ui:define name="content">
+    <h:form>
+      <h:dataTable value="#{shoppingCartBean.items}" var="item" border="1" cellpadding="2" cellspacing="0">
+
+        <h:column>
+          <f:facet name="header">
+            <h:outputText value="Nome"/>
+          </f:facet>
+          <h:outputText value="#{item.product.name}"/>
+        </h:column>
+
+        <h:column>
+          <f:facet name="header">
+            <h:outputText value="Quantidade"/>
+          </f:facet>
+          <h:outputText value="#{item.amount}"/>
+        </h:column>
+
+        <h:column>
+          <f:facet name="header">
+            <h:outputText value="Preço"/>
+          </f:facet>
+          <h:outputText value="#{item.price}"/>
+        </h:column>
+
+      </h:dataTable>
+
+      <h:commandButton value="Limpar" action="#{shoppingCartBean.removeAllProducts()}"/>
+    </h:form>
+  </ui:define>
+
+</ui:decorate>
