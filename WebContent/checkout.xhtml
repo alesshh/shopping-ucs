@@ -5,34 +5,54 @@
 											xmlns:sh="http://java.sun.com/jsf/composite/shoppingUcs">
 
   <ui:define name="content">
-    <h:form>
-      <h:dataTable value="#{shoppingCartBean.items}" var="item" border="1" cellpadding="2" cellspacing="0">
-
-        <h:column>
-          <f:facet name="header">
-            <h:outputText value="Nome"/>
-          </f:facet>
-          <h:outputText value="#{item.product.name}"/>
-        </h:column>
-
-        <h:column>
-          <f:facet name="header">
-            <h:outputText value="Quantidade"/>
-          </f:facet>
-          <h:outputText value="#{item.amount}"/>
-        </h:column>
-
-        <h:column>
-          <f:facet name="header">
-            <h:outputText value="Preço"/>
-          </f:facet>
-          <h:outputText value="#{item.price}"/>
-        </h:column>
-
-      </h:dataTable>
-
-      <h:commandButton value="Limpar" action="#{shoppingCartBean.removeAllProducts()}"/>
-    </h:form>
+  	<div class="column_8 offset_2 panel">
+  		<h5>Carrinho</h5>
+	    <h:form>
+	      <h:dataTable value="#{shoppingCartBean.items}" var="item" border="1" cellpadding="2" cellspacing="0">
+	
+	        <h:column>
+	          <f:facet name="header">
+	            <h:outputText value="Nome"/>
+	          </f:facet>
+	          <h:outputText value="#{item.product.name}"/>
+	        </h:column>
+	
+	        <h:column>
+	          <f:facet name="header">
+	            <h:outputText value="Quantidade"/>
+	          </f:facet>
+	          <h:outputText value="#{item.amount}"/>
+	          
+	          <f:facet name="footer">
+	          	<strong>
+	          		<h:outputText value="Frete:"/>
+	          	</strong><br/>
+	          	<strong>
+	          		<h:outputText value="Total:"/>
+	          	</strong>
+	          </f:facet>
+	        </h:column>
+	
+	        <h:column>
+	          <f:facet name="header">
+	            <h:outputText value="Preço"/>
+	          </f:facet>
+	          <sh:currencyOutput value="#{item.price}" />
+	          
+	          <f:facet name="footer">
+	          	<sh:currencyOutput value="#{shoppingCartBean.shoppingFee}"/><br/>
+	          	<strong>
+	          		<sh:currencyOutput value="#{shoppingCartBean.total}"/>
+	          	</strong>
+	          </f:facet>
+	        </h:column>
+	      </h:dataTable>
+		  <h:commandLink value="Continuar comprando" action="/home" styleClass="button tiny secondary" />
+	      <h:commandButton value="Limpar" styleClass="button tiny secondary margin-left" action="#{shoppingCartBean.removeAllProducts()}"/>
+	      
+	      <h:commandButton value="Finalizar" styleClass="button primary" style="float: right; margint-top: -30px;"/>
+	    </h:form>
+	   </div>
   </ui:define>
 
 </ui:decorate>

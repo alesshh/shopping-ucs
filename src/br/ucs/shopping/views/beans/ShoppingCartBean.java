@@ -27,6 +27,20 @@ public class ShoppingCartBean  {
 	    return shoppingCartService.getItems();
 	}
 	
+	/**
+	 * @return
+	 */
+	public Double getShoppingFee() {
+		return shoppingCartService.getShoppingFee();
+	}
+	
+	/**
+	 * @return
+	 */
+	public Double getTotal() {
+		return shoppingCartService.getTotal();
+	}
+	
 	public void checkout(Customer customer, CreditCard creditCard) {
 	    shoppingCartService.checkout(customer, creditCard);
 	}

@@ -14,4 +14,8 @@ public interface ShoppingCartIntf {
     public void addProduct(Product product, Integer amount);
     public void removeAllProducts();
     public void setItems(List<Item> items);
+    
+    public Double getShoppingFee();
+    
+    public Double getTotal();
 }
