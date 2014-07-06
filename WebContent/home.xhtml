@@ -1,95 +1,63 @@
 <?xml version="1.0"?>
 <ui:decorate template="/template/app.xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
 											xmlns:c="http://java.sun.com/jsf/core"
-											xmlns:h="http://java.sun.com/jsf/html">
+											xmlns:h="http://java.sun.com/jsf/html"
+											xmlns:sh="http://java.sun.com/jsf/composite/shoppingUcs">
 
 
     <ui:define name="content">
-    	
-
 			<div class="column_12 search-bar margin-bottom">
-				<form>
-					<input type="text" placeholder="Que produto você procura?"/>
+				<h:form>
+					<sh:textField fieldId="nameSearch" value="#{shoppingBean.nameSearch}" label="O que você procura?" />
+				
+					<h:commandButton value="Pesquisar" action="#{shoppingBean.search}" styleClass="button margin-top margin-right" />
+					<h:commandLink value="Limpar" action="#{shoppingBean.clearSearch}" />
 					<span class="icon search"></span>
-				</form>
+				</h:form>
 			</div>
-			<div class="column_4 product">
-				<figure>
-					<img src="http://www.stuartslondon.com/images/brutus-shirt-trimfit-red-heritage-tartan-shirt-p1871-10354_zoom.jpg" />
-				</figure>
-				<p>
-					Camiseta Xadrez<br/>
-					<strong class="price"> R$ 150,00</strong>
-				</p>
-				<a href="#" class="button secondary tiny">
-					+ Detalhes
-				</a>
-			</div>
-			<div class="column_4 product">
-				<figure>
-					<img src="http://www.stuartslondon.com/images/brutus-shirt-trimfit-red-heritage-tartan-shirt-p1871-10354_zoom.jpg" />
-				</figure>
-				<p>
-					Camiseta Xadrez<br/>
-					<strong class="price"> R$ 150,00</strong>
-				</p>
-				<a href="#" class="button secondary tiny">
-					+ Detalhes
-				</a>
-			</div>
-			<div class="column_4 product">
-				<figure>
-					<img src="http://www.stuartslondon.com/images/brutus-shirt-trimfit-red-heritage-tartan-shirt-p1871-10354_zoom.jpg" />
-				</figure>
-				<p>
-					Camiseta Xadrez<br/>
-					<strong class="price"> R$ 150,00</strong>
-				</p>
-				<a href="#" class="button secondary tiny">
-					+ Detalhes
-				</a>
-			</div>
-			<div class="column_4 product">
-				<figure>
-					<img src="http://www.stuartslondon.com/images/brutus-shirt-trimfit-red-heritage-tartan-shirt-p1871-10354_zoom.jpg" />
-				</figure>
-				<p>
-					Camiseta Xadrez<br/>
-					<strong class="price"> R$ 150,00</strong>
-				</p>
-				<a href="#" class="button secondary tiny">
-					+ Detalhes
-				</a>
-			</div>
-			<div class="column_4 product">
-				<figure>
-					<img src="http://www.stuartslondon.com/images/brutus-shirt-trimfit-red-heritage-tartan-shirt-p1871-10354_zoom.jpg" />
-				</figure>
-				<p>
-					Camiseta Xadrez<br/>
-					<strong class="price"> R$ 150,00</strong>
-				</p>
-				<a href="#" class="button secondary tiny">
-					+ Detalhes
-				</a>
-			</div>
-			<div class="column_4 product">
-				<figure>
-					<img src="http://www.stuartslondon.com/images/brutus-shirt-trimfit-red-heritage-tartan-shirt-p1871-10354_zoom.jpg" />
-				</figure>
-				<p>
-					Camiseta Xadrez<br/>
-					<strong class="price"> R$ 150,00</strong>
-				</p>
-				<a href="#" class="button secondary tiny">
-					+ Detalhes
-				</a>
-			</div>
+			<ui:repeat var="product" value="#{shoppingBean.getProducts()}">
+				<div class="column_4 product">
+					<figure>
+						<h:graphicImage alt="#{product.name}" url="#{product.imageUrl}" />
+					</figure>
+					<p>
+						<strong>#{product.name}</strong> - <small>#{product.manufacturer.name}</small><br/><br/>
+						
+						<strong class="price"><sh:currencyOutput value="#{product.stock.price}" /></strong>
+					</p>
+					<!-- <a href="#" class="button secondary tiny">
+						+ Detalhes
+					</a> -->
+				</div>	
+			</ui:repeat>
 			
-			<ul class="pagination">
-				<li class="prev"><a href="" class="button alert"><span class="icon chevron-left"></span> Anterior</a></li>
-				<li class="next"><a href="" class="button alert">Próxima <span class="icon chevron-right"></span></a></li>
-			</ul>
+			<c:verbatim rendered="#{shoppingBean.entitiesCount == 0}">
+			    <p class="column_12 text bold">Nenhum produto encontrado.</p>
+		    </c:verbatim>
+						
+			
+			<br class="clearfix" />
+			<h:form>
+				<ul class="pagination">
+					<li class="prev">
+						<h:commandLink action="/home"
+				    				   actionListener="#{shoppingBean.prevPage}" 
+				    				   styleClass="button alert"
+				    				   rendered="#{shoppingBean.prevPage}">
+					   		<span class="icon chevron-left"></span> Anterior
+				    	</h:commandLink>
+					</li>
+					
+					<li class="next">
+						<h:commandLink action="/home"
+				    				   actionListener="#{shoppingBean.nextPage}" 
+				    				   styleClass="button alert"
+				    				   rendered="#{shoppingBean.nextPage}">
+					   		Próxima <span class="icon chevron-right"></span>
+				    	</h:commandLink>
+					</li>
+				</ul>
+			</h:form>
     </ui:define>
 
 </ui:decorate>

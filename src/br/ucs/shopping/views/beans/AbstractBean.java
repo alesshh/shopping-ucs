@@ -137,6 +137,17 @@ public abstract class AbstractBean<T> {
 	/**
 	 * @return
 	 */
+	public int getCurrentPage() {
+		return currentPage;
+	}
+
+	public void setCurrentPage(int currentPage) {
+		this.currentPage = currentPage;
+	}
+
+	/**
+	 * @return
+	 */
 	public boolean getNextPage() {
 		return nextPage;
 	}

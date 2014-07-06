@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE HTML>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:c="http://java.sun.com/jsf/composite"
+	  xmlns:cr="http://java.sun.com/jsf/core"
+	  xmlns:sh="http://java.sun.com/jsf/composite/shoppingUcs">
+	<c:interface>
+		<c:attribute name="value" />
+	</c:interface>
+	
+	<c:implementation>
+		<h:outputText value="#{cc.attrs.value}">
+			<cr:convertNumber type="currency" maxFractionDigits="2" currencySymbol="R$" />
+		</h:outputText>
+	</c:implementation>
+</html>
