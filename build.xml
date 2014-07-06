@@ -89,12 +89,6 @@
 			<classpath refid="jars" />
 
 
-				create table AppUser (id int not null, username varchar(60) not null, password varchar(60) not null, role varchar(60));
-
-
-				insert into AppUser values (1,'ucs','ucs', 'user');
-
-				insert into AppUser values (1,'alesshh','123456', 'admin');
 
 		</sql>
 	</target>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<ui:composition xmlns:h="http://java.sun.com/jsf/html"  
+                xmlns:f="http://java.sun.com/jsf/core"  
+                xmlns:ui="http://java.sun.com/jsf/facelets">  
+
+	<form class="column_5 offset_2 panel" method="post" action="j_security_check">
+	   	<label for="j_username">Usuário: </label>
+		<input type="text" id="j_username" name="j_username" />
+			
+		<label for="j_password">Senha: </label>
+		<input type="password" id="j_password" name="j_password" />
+	   		
+		<input type="submit" value="Login" class="button alert margin-top" />
+	 </form>
+	 <div class="column_3 margin-top text center" style="padding-top: 80px;">		
+		<h5>Ainda não tem uma conta?</h5>
+	 	<h:form>
+	 		<h:commandLink styleClass="button margin-top" action="/sign_up" actionListener="#{signUpBean.build}">Cadastre-se!</h:commandLink>
+	 	</h:form>
+	</div>  
+</ui:composition> 

@@ -23,6 +23,26 @@ import javax.persistence.Table;
 @DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING)
 @DiscriminatorValue(value = "person")
 public class Person implements Serializable {
+	enum Role {
+		USER("user"), ADMIN("admin"), MASTER("master");
+
+		private String name;
+
+		/**
+		 * @param name
+		 */
+		Role(String name) {
+			this.name = name;
+		}
+
+		/**
+		 * @return
+		 */
+		public String getName() {
+			return name;
+		}
+	}
+
 	/**
 	 * 
 	 */
@@ -41,6 +61,8 @@ public class Person implements Serializable {
 	private String password;
 	@Column
 	private String phone;
+	@Column
+	private String role;
 	@OneToOne(cascade = CascadeType.ALL)
 	private Address address;
 
@@ -59,9 +81,11 @@ public class Person implements Serializable {
 	 * @param username
 	 * @param password
 	 * @param phone
+	 * @param address
+	 * @param role
 	 */
 	public Person(Integer id, String name, Date birthDate, String username,
-			String password, String phone, Address address) {
+			String password, String phone, Address address, Role role) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -70,6 +94,28 @@ public class Person implements Serializable {
 		this.password = password;
 		this.phone = phone;
 		this.address = address;
+		this.role = role.getName();
+	}
+
+	/**
+	 * @return
+	 */
+	public String getRole() {
+		return role;
+	}
+
+	/**
+	 * @param role
+	 */
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	/**
+	 * @param role
+	 */
+	public void setRole(Role role) {
+		this.role = role.getName();
 	}
 
 	/**

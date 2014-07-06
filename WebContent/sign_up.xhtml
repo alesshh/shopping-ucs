@@ -11,20 +11,20 @@
     			<p class="margin-bottom">Para criar sua conta, informe os dados abaixo.</p>
     			
 	    		<div class="half half-l">
-	    			<sh:textField label="Nome" fieldId="name" value="#{signUpBean.user.name}" required="true"  />
-	    			<sh:emailField label="E-mail" fieldId="email" value="#{signUpBean.user.email}" required="true"  />
-	    			<sh:passwordField label="Senha" fieldId="password" value="#{signUpBean.user.password}" required="true"  />
-	    			<sh:dateField label="Data de Nascimento" fieldId="birth" value="#{signUpBean.user.birth}" required="true" />
-	    			<sh:phoneField label="Telefone" fieldId="phone" value="#{signUpBean.user.phone}" required="true" />	    			
-	    			<sh:textField label="Logradouro" fieldId="street" value="#{signUpBean.user.address.street}" required="true"  />
+	    			<sh:textField label="Nome" fieldId="name" value="#{signUpBean.entity.name}" required="true"  />
+	    			<sh:textField label="Usuário" fieldId="username" value="#{signUpBean.entity.username}" required="true"  />
+	    			<sh:passwordField label="Senha" fieldId="password" value="#{signUpBean.entity.password}" required="true"  />
+	    			<sh:dateField label="Data de Nascimento" fieldId="birth" value="#{signUpBean.entity.birthDate}" required="true" />
+	    			<sh:phoneField label="Telefone" fieldId="phone" value="#{signUpBean.entity.phone}" required="true" />	    			
+	    			<sh:textField label="Logradouro" fieldId="street" value="#{signUpBean.entity.address.street}" required="true"  />
 	    		</div>
 	    		
 	    		<div class="half half-r">
-	    			<sh:textField label="Número" fieldId="number" value="#{signUpBean.user.address.number}" required="true"  />
-	    			<sh:textField label="Complemento" fieldId="adjunct" value="#{signUpBean.user.address.adjunct}"  />
- 			  		<sh:zipField label="CEP:" fieldId="zipcode" value="#{signUpBean.user.address.zipcode}" required="true"  />
- 			  		<sh:textField label="Cidade" fieldId="city" value="#{signUpBean.user.address.city}" required="true"  />
- 			  		<sh:textField label="Estado" fieldId="state" value="#{signUpBean.user.address.state}" required="true"  />
+	    			<sh:textField label="Número" fieldId="number" value="#{signUpBean.entity.address.number}" required="true"  />
+	    			<sh:textField label="Complemento" fieldId="adjunct" value="#{signUpBean.entity.address.adjunct}"  />
+ 			  		<sh:zipField label="CEP:" fieldId="zipcode" value="#{signUpBean.entity.address.zipcode}" required="true"  />
+ 			  		<sh:textField label="Cidade" fieldId="city" value="#{signUpBean.entity.address.city}" required="true"  />
+ 			  		<sh:textField label="Estado" fieldId="state" value="#{signUpBean.entity.address.state}" required="true"  />
 	    		</div>
 	    		
 	    		<br class="clearfix"/>

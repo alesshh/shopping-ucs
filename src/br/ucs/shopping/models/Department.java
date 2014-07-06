@@ -6,8 +6,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -20,13 +18,13 @@ public class Department implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(generator="department_sq")
-	@SequenceGenerator(name="department_sq", sequenceName="department_sq")
+	@GeneratedValue(generator = "department_sq")
+	@SequenceGenerator(name = "department_sq", sequenceName = "department_sq")
 	private Integer id;
 
 	@Column
 	private String name;
-	
+
 	/**
 	 * 
 	 */
