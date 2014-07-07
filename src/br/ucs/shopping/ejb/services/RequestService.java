@@ -52,7 +52,7 @@ public class RequestService extends AbstractCrudService<Request> implements
 		Stock stock = product.getStock();
 		Integer amount = stock.getAmount();
 
-		stock.setAmount(amount - item.getAmount());
+		stock.setAmount(amount + item.getAmount());
 		em.merge(stock);
 	}
 

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<ui:decorate template="/template/app.xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+											xmlns:c="http://java.sun.com/jsf/core"
+											xmlns:h="http://java.sun.com/jsf/html"
+											xmlns:sh="http://java.sun.com/jsf/composite/shoppingUcs">
+
+
+    <ui:define name="content">
+    	<div class="column_6 panel offset_3">
+    		<h5>Minhas coisas » <ui:insert name="admin_page_title" /></h5>
+    		<h:messages globalOnly="true"  errorClass="margin-top error margin-bottom" infoClass="info margin-top margin-bottom" />
+    		<ui:insert name="admin_content" />
+    	</div>
+    </ui:define>
+</ui:decorate>

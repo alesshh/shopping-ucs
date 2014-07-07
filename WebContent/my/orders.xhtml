@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<ui:decorate template="/template/my.xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+											xmlns:c="http://java.sun.com/jsf/core"
+											xmlns:h="http://java.sun.com/jsf/html"
+											xmlns:sh="http://java.sun.com/jsf/composite/shoppingUcs">
+	<ui:define name="admin_page_title">Pedidos</ui:define>
+    <ui:define name="admin_content">
+    	<h:dataTable value="#{logoutBean.customerRequests}" var="row">
+	    	<h:column>
+	    			<c:facet name="header">Pedido</c:facet>
+	    			<strong>Pedido: #{row.id}</strong><br/>
+	    			
+	    			<strong>Produtos:</strong><br/>
+	    			<ul>
+	    				<ui:repeat var="item" value="#{row.items}">
+	    					<li>
+	    						<h:outputText  value="#{item.amount} x #{item.product.name}" /> de <sh:currencyOutput value="#{item.price}" />
+	    						<br/>
+	    						--
+	    					</li>
+	    				</ui:repeat>
+	    			</ul><br/>
+	    			<strong>Frete:</strong> <sh:currencyOutput value="#{row.shippingFee}" /><br/>
+	    			<strong>Cliente:</strong> #{row.customer.name}<br/>
+	    			<strong>Cartão: </strong> 
+	    			<h:outputText value="#{row.creditCard.company}" /> - <h:outputText value="#{row.creditCard.number}" /><br/>
+	    			<br/><br/>
+	    			<strong>
+	    				<h:outputText value="Cancelado" rendered="#{row.isRejected()}" />
+	    				<h:outputText value="Enviado" rendered="#{row.isCompleted()}" />
+	    				<h:outputText value="Aceito" rendered="#{row.isOpen()}" />
+	    			</strong>
+	    		</h:column>
+    	</h:dataTable>
+    </ui:define>
+
+</ui:decorate>

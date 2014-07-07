@@ -12,12 +12,12 @@
     			<strong>Pedido: #{row.id}</strong><br/>
     			
     			<strong>Produtos:</strong><br/>
-    			<h:outputText value="#{row.items}" />
     			<ul>
     				<ui:repeat var="item" value="#{row.items}">
     					<li>
     						<h:outputText  value="#{item.amount} x #{item.product.name}" />
-    						<sh:currencyOutput value="#{item.price}" />
+    						<sh:currencyOutput value="#{item.price}" /><br/>
+    						--
     					</li>
     				</ui:repeat>
     			</ul><br/>

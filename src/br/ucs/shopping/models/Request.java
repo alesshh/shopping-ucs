@@ -60,7 +60,7 @@ public class Request implements Serializable {
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Customer customer;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "request", fetch = FetchType.EAGER)
 	private List<Item> items;
 
 	@OneToOne(cascade = CascadeType.ALL)

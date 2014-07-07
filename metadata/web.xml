@@ -40,6 +40,18 @@
 			<role-name>master</role-name>
 		</auth-constraint>
 	</security-constraint>
+	
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>shopping-ucs</web-resource-name>
+			<url-pattern>/my/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>admin</role-name>
+			<role-name>master</role-name>
+			<role-name>user</role-name>
+		</auth-constraint>
+	</security-constraint>
 
 	<login-config>
 		<auth-method>FORM</auth-method>

@@ -1,15 +1,14 @@
 <!DOCTYPE HTML>
 <html lang="pt-BR" xmlns:h="http://java.sun.com/jsf/html"
-				  xmlns:f="http://java.sun.com/jsf/core"
-				  xmlns:ui="http://java.sun.com/jsf/facelets">
-	<h:head>
-  		<meta charset="UTF-8" />
-	  	<title>Shopping UCS</title>
-	  	<h:outputStylesheet name="css/tuktuk.css" />
-	  	<h:outputStylesheet name="css/tuktuk.icons.css" />
-	  	<h:outputStylesheet name="css/tuktuk.theme.css" />
-	  	<h:outputStylesheet name="css/main.css" />
-
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta charset="UTF-8" />
+	<title>Shopping UCS</title>
+	<h:outputStylesheet name="css/tuktuk.css" />
+	<h:outputStylesheet name="css/tuktuk.icons.css" />
+	<h:outputStylesheet name="css/tuktuk.theme.css" />
+	<h:outputStylesheet name="css/main.css" />
 	  	<link href="#{resource['images/favicon.ico']}" rel="shortcut icon" type="image/vnd.microsoft.icon" />
 	  	<link href="#{resource['images/favicon.png']}" rel="shortcut icon" type="image/x-icon" />
 	  	<link href="#{resource['images/favicon.png']}" rel="shortcut icon" type="image/png" />
@@ -24,23 +23,28 @@
 				</div>
 				<nav class="column_8 text right" data-tuktuk="menu">
 					<h:link styleClass="button tiny icon shopping-cart" outcome="/checkout.xhtml"> Carrinho</h:link>
-          <h:link styleClass="button secondary tiny icon signin" outcome="/login" rendered="#{!logoutBean.isLoggedIn()}"> Login</h:link>
-          <h:form style="display: inline;">
-            <h:commandLink styleClass="button secondary tiny icon signout" value="Logout" action="#{logoutBean.logout()}" rendered="#{logoutBean.isLoggedIn()}"/>
-          </h:form>
-					<h:link styleClass="button secondary tiny icon pencil" outcome="/admin/index"> Admin</h:link>
- 				</nav>
-			</div>
-		</header>
+	          <h:link styleClass="button secondary tiny icon signin" outcome="/login" rendered="#{!logoutBean.isLoggedIn()}"> Login</h:link>
+	          <h:form style="display: inline;">
+	            <h:commandLink styleClass="button secondary tiny icon signout" value="Logout" action="#{logoutBean.logout()}" rendered="#{logoutBean.isLoggedIn()}"/>
+	          </h:form>
+	          <h:link styleClass="button secondary tiny icon grid"
+						outcome="/my/orders" rendered="#{logoutBean.isLoggedIn()}"> Meus pedidos</h:link>
 
-		<div class="row padding-top">
-			<ui:insert name="content"></ui:insert>
+						<h:link styleClass="button secondary tiny icon pencil" outcome="/admin/index"> Admin</h:link>
+
+
+				</nav>
 		</div>
+	</header>
 
-		<!-- <h:outputScript name="js/tuktuk.js"  /> -->
-		<h:outputScript name="js/vendor/jquery.js"  />
-		<h:outputScript name="js/vendor/masked_input.js"  />
-		<h:outputScript name="js/vendor/jquery.maskMoney.min.js"  />
-		<h:outputScript name="js/app.js"  />
-	</h:body>
+	<div class="row padding-top">
+		<ui:insert name="content"></ui:insert>
+	</div>
+
+	<!-- <h:outputScript name="js/tuktuk.js"  /> -->
+	<h:outputScript name="js/vendor/jquery.js" />
+	<h:outputScript name="js/vendor/masked_input.js" />
+	<h:outputScript name="js/vendor/jquery.maskMoney.min.js" />
+	<h:outputScript name="js/app.js" />
+</h:body>
 </html>
