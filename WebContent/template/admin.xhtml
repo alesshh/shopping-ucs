@@ -21,31 +21,31 @@
     					<h:commandLink action="/admin/departments/index"
     								   	actionListener="#{departmentBean.loadEntities}"
     								 	value="Departamentos"
-    								 	styleClass="theme color"/>
+                      styleClass="theme color" rendered="#{logoutBean.employee}"/>
     				</li>
     				<li>
     					<h:commandLink action="/admin/manufacturers/index"
     								   	actionListener="#{manufacturerBean.loadEntities}"
     								 	value="Fabricantes"
-    								 	styleClass="theme color"/>
+                      styleClass="theme color" rendered="#{logoutBean.employee}"/>
 					</li>
 					<li>
     					<h:commandLink action="/admin/employees/index"
     								   	actionListener="#{employeeBean.loadEntities}"
     								 	value="Funcionários"
-    								 	styleClass="theme color"/>
+                      styleClass="theme color" rendered="#{logoutBean.employee}"/>
 					</li>
 					<li>
     					<h:commandLink action="/admin/products/index"
     								   	actionListener="#{productBean.loadEntities}"
     								 	value="Produtos"
-    								 	styleClass="theme color"/>
+                      styleClass="theme color" rendered="#{logoutBean.employee}"/>
 					</li>
                     <li>
                         <h:commandLink action="/admin/creditcards/index"
                                         actionListener="#{creditCardBean.loadEntities}"
                                         value="Cartões"
-                                        styleClass="theme color"/>
+                                        styleClass="theme color" rendered="#{logoutBean.customer}"/>
                     </li>
     			</ul>
     		</h:form>
