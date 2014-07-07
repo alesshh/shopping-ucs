@@ -12,6 +12,12 @@
     			<hr/>
     			<ul>
     				<li>
+    					<h:commandLink action="/admin/requests/index" 
+    								   	actionListener="#{requestBean.loadEntities}" 
+    								 	value="Pedidos"
+    								 	styleClass="theme color"/>
+    				</li>
+    				<li>
     					<h:commandLink action="/admin/departments/index" 
     								   	actionListener="#{departmentBean.loadEntities}" 
     								 	value="Departamentos"

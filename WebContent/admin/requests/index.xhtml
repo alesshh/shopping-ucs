@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<ui:decorate template="/template/admin.xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+											xmlns:c="http://java.sun.com/jsf/core"
+											xmlns:h="http://java.sun.com/jsf/html"
+											xmlns:sh="http://java.sun.com/jsf/composite/shoppingUcs">
+
+	<ui:define name="admin_page_title">Pedidos</ui:define>
+    <ui:define name="admin_content">
+    	<sh:collectionTable bean="#{requestBean}">
+-     		<h:column>
+    			<c:facet name="header">Pedido</c:facet>
+    			<strong>Pedido: #{row.id}</strong><br/>
+    			
+    			<strong>Produtos:</strong><br/>
+    			<h:outputText value="#{row.items}" />
+    			<ul>
+    				<ui:repeat var="item" value="#{row.items}">
+    					<li>
+    						<h:outputText  value="#{item.amount} x #{item.product.name}" />
+    						<sh:currencyOutput value="#{item.price}" />
+    					</li>
+    				</ui:repeat>
+    			</ul><br/>
+    			<strong>Frete:</strong> <sh:currencyOutput value="#{row.shippingFee}" /><br/>
+    			<strong>Cliente:</strong> #{row.customer.name}<br/>
+    			<strong>Cartão: </strong> 
+    			<h:outputText value="#{row.creditCard.company}" /> - <h:outputText value="#{row.creditCard.number}" />
+    		</h:column>
+    		
+    		<h:column>
+    			<h:form>
+    				<h:commandButton styleClass="button alert tiny" action="#{requestBean.cancel(row)}" rendered="#{row.isOpen()}" value="Cancelar" />
+    				<h:commandButton styleClass="button primary tiny" action="#{requestBean.confirm(row)}" rendered="#{row.isOpen()}" value="Concluir" />
+    			</h:form>
+    			<h:outputText value="Cancelado" rendered="#{row.isRejected()}"/>
+    			<h:outputText value="Enviado" rendered="#{row.isCompleted()}" />
+    			
+    		</h:column>
+ 		</sh:collectionTable>
+    </ui:define>
+    <ui:define name="filters">
+    	<sh:defaultSearch bean="#{requestBean}" />
+    </ui:define>
+ </ui:decorate>

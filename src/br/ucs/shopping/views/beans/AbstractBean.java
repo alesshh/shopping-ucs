@@ -8,7 +8,6 @@ import javax.faces.context.FacesContext;
 
 import br.ucs.shopping.ejb.intf.CrudServiceIntf;
 import br.ucs.shopping.models.PaginatedRecords;
-import br.ucs.shopping.models.Manufacturer;
 
 public abstract class AbstractBean<T> {
 	final int PAGINATION = 6;
@@ -106,8 +105,15 @@ public abstract class AbstractBean<T> {
 		this.currentPage = 1;
 
 		this.loadEntities();
-		
+
 		return "index";
+	}
+
+	/**
+	 * @return
+	 */
+	public boolean hasCreate() {
+		return true;
 	}
 
 	/**
@@ -117,9 +123,9 @@ public abstract class AbstractBean<T> {
 		this.currentPage = 1;
 		this.idSearch = null;
 		this.nameSearch = null;
-		
+
 		this.loadEntities();
-		
+
 		return "index";
 	}
 
@@ -202,9 +208,13 @@ public abstract class AbstractBean<T> {
 	}
 
 	/**
+	 * @throws Exception
 	 * 
 	 */
-	public String save() {
+	public String save() throws Exception {
+		if (!hasCreate()) {
+			throw new Exception("Método não permitido");
+		}
 		getcrudService().save(entity);
 
 		setFlashInfo("Registro salvo com sucesso!");
@@ -212,14 +222,14 @@ public abstract class AbstractBean<T> {
 
 		return "index";
 	}
-	
+
 	/**
 	 * @return
 	 */
 	protected boolean hasNameSearch() {
 		return nameSearch != null && !nameSearch.isEmpty();
 	}
-	
+
 	/**
 	 * @return
 	 */

@@ -150,3 +150,10 @@ body form textarea:focus {
 .button .icon {
 	margin-right: 0 !important;
 }
+
+
+.welcome {
+	margin: 100px 0;
+	color: #ccc;
+	text-align: center;
+}

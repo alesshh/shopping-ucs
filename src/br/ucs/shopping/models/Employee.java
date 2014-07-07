@@ -79,6 +79,24 @@ public class Employee extends Person {
 	}
 
 	/**
+	 * @param master
+	 */
+	public void setMaster(boolean master) {
+		if (master) {
+			this.setRole(Role.MASTER);
+		} else {
+			this.setRole(Role.ADMIN);
+		}
+	}
+
+	/**
+	 * @return
+	 */
+	public boolean getMaster() {
+		return isMaster();
+	}
+
+	/**
 	 * @return
 	 */
 	public boolean isMaster() {

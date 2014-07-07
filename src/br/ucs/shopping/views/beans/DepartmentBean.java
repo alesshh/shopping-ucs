@@ -14,7 +14,7 @@ import br.ucs.shopping.models.Department;
 public class DepartmentBean extends AbstractBean<Department> {
 
 	@EJB
-	private DepartmentServiceIntf departmantService;
+	private DepartmentServiceIntf departmentService;
 
 	/**
 	 * 
@@ -30,7 +30,7 @@ public class DepartmentBean extends AbstractBean<Department> {
 	 */
 	@Override
 	protected CrudServiceIntf<Department> getcrudService() {
-		return departmantService;
+		return departmentService;
 	}
 
 }

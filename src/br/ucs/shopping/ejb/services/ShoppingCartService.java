@@ -38,13 +38,16 @@ public class ShoppingCartService implements ShoppingCartIntf {
 
 	public void addProduct(Product product, Integer amount) {
 		Stock stock = product.getStock();
+
 		if (amount > stock.getAmount()) {
 			amount = stock.getAmount();
 		} else if (amount < 0) {
 			amount = 1;
 		}
-		this.items.add(new Item(new Integer(this.items.size() + 1), amount,
-				new Double(stock.getPrice().doubleValue() * amount), product));
+
+		Item item = new Item(this.items.size() + 1, amount, stock.getPrice()
+				.doubleValue() * amount, product);
+		this.items.add(item);
 	}
 
 	/*
@@ -72,33 +75,37 @@ public class ShoppingCartService implements ShoppingCartIntf {
 		}
 		Double shoppingFee = getShoppingFee();
 
-		Request request = new Request(new Integer(
-				customer.getRequests().size() + 1), new Date(), shoppingFee);
+		Request request = new Request(customer.getRequests().size() + 1,
+				new Date(), shoppingFee);
 		request.setCreditCard(creditCard);
 		request.setItems(this.items);
 		entityManager.persist(request);
 		return true;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see br.ucs.shopping.ejb.intf.ShoppingCartIntf#removeAllProducts()
 	 */
 	public void removeAllProducts() {
 		this.items = new ArrayList<Item>();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see br.ucs.shopping.ejb.intf.ShoppingCartIntf#getTotal()
 	 */
 	public Double getTotal() {
 		Double total = new Double(0);
-		
+
 		for (Item item : this.items) {
 			total += item.getPrice();
 		}
-		
+
 		total += getShoppingFee();
-		
+
 		return total;
 	}
 }
