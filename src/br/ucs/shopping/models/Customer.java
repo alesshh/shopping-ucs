@@ -12,6 +12,9 @@ public class Customer extends Person {
     @OneToMany(cascade = CascadeType.ALL)
     private List<Request> requests;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<CreditCard> creditcards;
+
 	/**
 	 * 
 	 */
@@ -23,6 +26,7 @@ public class Customer extends Person {
 	public Customer() {
 		super();
 		this.requests = new ArrayList<Request>();
+		this.creditcards = new ArrayList<CreditCard>();
 	}
 
 	/**
@@ -39,6 +43,7 @@ public class Customer extends Person {
 		super(id, name, birthDate, username, password, phone, address,
 				Role.USER);
 		this.requests = new ArrayList<Request>();
+		this.creditcards = new ArrayList<CreditCard>();
 	}
 
     public void setRequests(List<Request> requests) {
@@ -47,5 +52,13 @@ public class Customer extends Person {
 
     public List<Request> getRequests() {
         return requests;
+    }
+
+    public void setCreditCards(List<CreditCard> creditcards) {
+        this.creditcards = creditcards;
+    }
+
+    public List<CreditCard> getCreditCards() {
+        return creditcards;
     }
 }

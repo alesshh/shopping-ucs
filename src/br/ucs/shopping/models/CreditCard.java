@@ -1,8 +1,6 @@
 package br.ucs.shopping.models;
 
 import java.io.Serializable;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -35,11 +33,10 @@ public class CreditCard implements Serializable {
 	public CreditCard() {
 	}
 
-	public CreditCard(String company, String number, String expirationDate)
-			throws ParseException {
+	public CreditCard(String company, String number, Date expirationDate) {
 		this.company = company;
 		this.number = number;
-		this.setExpirationDate(expirationDate);
+		this.expirationDate = expirationDate;
 	}
 
 	public void setId(Integer id) {
@@ -66,9 +63,8 @@ public class CreditCard implements Serializable {
 		return number;
 	}
 
-	public void setExpirationDate(String expirationDate) throws ParseException {
-		SimpleDateFormat expirationDateFormat = new SimpleDateFormat("ddMMyyyy");
-		this.expirationDate = expirationDateFormat.parse(expirationDate);
+	public void setExpirationDate(Date expirationDate) {
+		this.expirationDate = expirationDate;
 	}
 
 	public Date getExpirationDate() {
