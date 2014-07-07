@@ -12,29 +12,35 @@
     			<hr/>
     			<ul>
     				<li>
-    					<h:commandLink action="/admin/departments/index" 
-    								   	actionListener="#{departmentBean.loadEntities}" 
+    					<h:commandLink action="/admin/departments/index"
+    								   	actionListener="#{departmentBean.loadEntities}"
     								 	value="Departamentos"
     								 	styleClass="theme color"/>
     				</li>
     				<li>
-    					<h:commandLink action="/admin/manufacturers/index" 
-    								   	actionListener="#{manufacturerBean.loadEntities}" 
+    					<h:commandLink action="/admin/manufacturers/index"
+    								   	actionListener="#{manufacturerBean.loadEntities}"
     								 	value="Fabricantes"
     								 	styleClass="theme color"/>
 					</li>
 					<li>
-    					<h:commandLink action="/admin/employees/index" 
-    								   	actionListener="#{employeeBean.loadEntities}" 
+    					<h:commandLink action="/admin/employees/index"
+    								   	actionListener="#{employeeBean.loadEntities}"
     								 	value="Funcionários"
     								 	styleClass="theme color"/>
 					</li>
 					<li>
-    					<h:commandLink action="/admin/products/index" 
-    								   	actionListener="#{productBean.loadEntities}" 
+    					<h:commandLink action="/admin/products/index"
+    								   	actionListener="#{productBean.loadEntities}"
     								 	value="Produtos"
     								 	styleClass="theme color"/>
 					</li>
+                    <li>
+                        <h:commandLink action="/admin/creditcards/index"
+                                        actionListener="#{creditCardBean.loadEntities}"
+                                        value="Cartões"
+                                        styleClass="theme color"/>
+                    </li>
     			</ul>
     		</h:form>
     	</div>
@@ -43,7 +49,7 @@
     		<h:messages globalOnly="true"  errorClass="margin-top error margin-bottom" infoClass="info margin-top margin-bottom" />
     		<ui:insert name="admin_content" />
     	</div>
-    	
+
     	<ui:insert name="filters" />
     </ui:define>
  </ui:decorate>

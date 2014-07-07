@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<ui:decorate template="/template/admin.xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+											xmlns:c="http://java.sun.com/jsf/core"
+											xmlns:h="http://java.sun.com/jsf/html"
+											xmlns:sh="http://java.sun.com/jsf/composite/shoppingUcs">
+
+	<ui:define name="admin_page_title">Cartão de crédito</ui:define>
+    <ui:define name="admin_content">
+    	<h:form styleClass="margin-top">
+    		<h:inputHidden value="#{creditCardBean.entity.id}"/>
+            <sh:textField fieldId="company" label="Companhia" value="#{creditCardBean.entity.company}" require="true" />
+            <sh:textField fieldId="number" label="Número do cartão" value="#{creditCardBean.entity.number}" require="true" />
+            <sh:textField fieldId="expirationDate" label="Data de expiração" value="#{creditCardBean.entity.expirationDate}" require="true" />
+
+            <sh:formActions bean="#{creditCardBean}" />
+    	</h:form>
+    </ui:define>
+
+ </ui:decorate>
