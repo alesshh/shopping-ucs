@@ -1,12 +1,13 @@
 package br.ucs.shopping.views.beans;
 
 import br.ucs.shopping.models.Customer;
+import br.ucs.shopping.models.Employee;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.persistence.*;
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 @ManagedBean
 @SessionScoped
