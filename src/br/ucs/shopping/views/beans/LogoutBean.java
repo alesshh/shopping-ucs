@@ -53,4 +53,20 @@ public class LogoutBean {
     }
   }
 
+  public boolean isEmployee(){
+    if(this.getEmployee() != null){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  public boolean isCustomer(){
+    if(this.getCustomer() != null){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
 }

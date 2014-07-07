@@ -49,7 +49,7 @@
 							value="#{product.stock.price}" /></strong>
 				</p>
 				<h:form>
-          <h:commandLink value="Comprar" styleClass="button alert tiny" action="#{shoppingCartBean.addProduct(product, 1)}" rendered="#{logoutBean.customer}"></h:commandLink>
+          <h:commandLink value="Comprar" styleClass="button alert tiny" action="#{shoppingCartBean.addProduct(product, 1)}" rendered="#{logoutBean.isCustomer()}"></h:commandLink>
         </h:form>
 			</div>
 		</ui:repeat>

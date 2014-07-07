@@ -50,7 +50,7 @@
 		  <h:commandLink value="Continuar comprando" action="/home" styleClass="button tiny secondary" />
 	      <h:commandButton value="Limpar" styleClass="button tiny secondary margin-left" action="#{shoppingCartBean.removeAllProducts()}"/>
 	      
-        <h:commandButton value="Finalizar" styleClass="button primary" style="float: right; margint-top: -30px;" rendered="#{logoutBean.customer}"/>
+        <h:commandButton value="Finalizar" styleClass="button primary" style="float: right; margint-top: -30px;" rendered="#{logoutBean.isCustomer()}"/>
 	    </h:form>
 	   </div>
   </ui:define>
