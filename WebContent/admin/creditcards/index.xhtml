@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<ui:decorate template="/template/admin.xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+											xmlns:c="http://java.sun.com/jsf/core"
+											xmlns:h="http://java.sun.com/jsf/html"
+											xmlns:sh="http://java.sun.com/jsf/composite/shoppingUcs">
+
+	<ui:define name="admin_page_title">Cartões de crédito</ui:define>
+    <ui:define name="admin_content">
+    	<sh:collectionTable bean="#{creditCardBean}">
+    		<h:column>
+    			<c:facet name="header">ID</c:facet>
+    			#{row.id}
+    		</h:column>
+    		<h:column>
+    			<c:facet name="header">Companhia</c:facet>
+    			#{row.company}
+    		</h:column>
+    		<h:column>
+    			<c:facet name="header">Número</c:facet>
+    			#{row.number}
+    		</h:column>
+    		<h:column>
+    			<sh:tableActions bean="#{creditCardBean}" entity="#{row}" />
+    		</h:column>
+ 		</sh:collectionTable>
+    </ui:define>
+
+    <ui:define name="filters">
+    	<sh:defaultSearch bean="#{creditCardBean}" />
+    </ui:define>
+ </ui:decorate>
